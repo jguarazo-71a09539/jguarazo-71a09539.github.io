@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桃色91蘑菇 - 内容方向与平台属性说明</title>
+<meta name="description" content="桃色91蘑菇是一个成人向内容聚合主题，页面汇聚了影视资源、图文图集、短视频与社区话题等具体条目，提供分类入口、深度解析与消费路径参考，适合成年访客按类型检索与比较。">
+<meta name="keywords" content="成人影视资源,图文图集,短视频合集,社区话题,内容分类">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a1a2e'/><circle cx='16' cy='16' r='7' fill='%23e94560'/><circle cx='23' cy='9' r='3' fill='%23f5c518'/></svg>">
+<style>
+:root{--ink:#1a1a2e;--ink2:#2d2d44;--accent:#e94560;--accent2:#f5c518;--bg:#faf9f7;--panel:#fff;--line:#e8e5e0;--muted:#6b6b76;--radius:12px;--shadow:0 2px 12px rgba(26,26,46,.07);--maxw:1360px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{line-height:1.35;font-weight:700}
+/* Sticky announcement + header */
+.sticky-wrap{position:sticky;top:0;z-index:100}
+.announce{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:7px 16px;letter-spacing:.3px}
+.announce b{color:var(--accent2)}
+.site-header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(26,26,46,.05)}
+.header-inner{max-width:var(--maxw);margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap}
+.brand svg{flex-shrink:0}
+.brand-text{letter-spacing:.5px}
+.main-nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:8px}
+.main-nav a{font-size:14px;color:var(--muted);padding:6px 11px;border-radius:8px;transition:.2s}
+.main-nav a:hover{background:#f0eeea;color:var(--accent)}
+.header-search{margin-left:auto;display:flex;align-items:center;gap:8px}
+.header-search input{border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:14px;width:180px;outline:none;background:var(--bg)}
+.header-search input:focus{border-color:var(--accent)}
+.header-search button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:14px;cursor:pointer}
+.header-search button:hover{background:#c73a52}
+/* Hero */
+.hero{max-width:var(--maxw);margin:0 auto;padding:52px 24px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.hero-left h1{font-size:clamp(30px,4.2vw,46px);color:var(--ink);margin-bottom:18px}
+.hero-left h1 span{color:var(--accent)}
+.hero-desc{font-size:16px;color:var(--muted);max-width:560px;margin-bottom:28px;line-height:1.8}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:11px 26px;border-radius:10px;font-weight:600;font-size:15px;transition:.2s}
+.btn-primary:hover{background:#c73a52;transform:translateY(-1px)}
+.btn-ghost{border:1.5px solid var(--ink2);color:var(--ink2);padding:10px 24px;border-radius:10px;font-weight:600;font-size:15px;transition:.2s}
+.btn-ghost:hover{background:var(--ink2);color:#fff}
+.hero-visual{position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.hero-visual svg{width:100%;max-width:420px;height:auto;filter:drop-shadow(0 12px 32px rgba(233,69,96,.18))}
+/* Main layout: left sidebar + main */
+.main-wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:210px 1fr;gap:36px;align-items:start}
+.channel-side{position:sticky;top:118px}
+.channel-side h2{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;padding-left:10px}
+.channel-list{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:8px;box-shadow:var(--shadow)}
+.channel-list a{display:block;padding:9px 14px;border-radius:8px;font-size:14.5px;color:var(--ink2);transition:.15s}
+.channel-list a:hover{background:#f5f2ed;color:var(--accent);padding-left:18px}
+.channel-list a.active{background:var(--accent);color:#fff}
+/* Sections */
+.section{margin-bottom:52px;scroll-margin-top:120px}
+.section-head{margin-bottom:22px}
+.section-head h2{font-size:24px;color:var(--ink);margin-bottom:6px}
+.section-head p{font-size:14.5px;color:var(--muted)}
+.overview-text{font-size:15.5px;line-height:1.9;color:var(--ink2)}
+.overview-text p{margin-bottom:14px}
+/* Card grid */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.22s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,26,46,.12)}
+.card-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#eee}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.card:hover .card-img img{transform:scale(1.05)}
+.card-badge{position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;font-size:11.5px;padding:3px 9px;border-radius:6px;font-weight:600}
+.card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+.card-body h3{font-size:16px;margin-bottom:8px;color:var(--ink)}
+.card-body .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:11.5px;background:#f3efe9;color:var(--muted);padding:2px 8px;border-radius:5px}
+.card-body p{font-size:13.5px;color:var(--muted);line-height:1.65;flex:1}
+.card-meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12.5px;color:#999;border-top:1px dashed var(--line);padding-top:10px}
+.card-meta .hot{color:var(--accent);font-weight:600}
+/* Update list */
+.update-list{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.update-item{display:flex;align-items:flex-start;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);transition:.15s}
+.update-item:last-child{border-bottom:none}
+.update-item:hover{background:#faf7f2}
+.update-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px}
+.update-item .u-title{font-weight:600;font-size:14.5px;color:var(--ink);min-width:140px}
+.update-item .u-desc{font-size:13.5px;color:var(--muted);flex:1}
+.update-item .u-time{font-size:12.5px;color:#aaa;white-space:nowrap}
+/* Category grid */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.cat-item{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 16px;text-align:center;transition:.2s;cursor:pointer}
+.cat-item:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 14px rgba(233,69,96,.12)}
+.cat-item .c-name{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px}
+.cat-item .c-count{font-size:12.5px;color:var(--muted)}
+/* Deep dive */
+.deep-dive{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:32px 36px;box-shadow:var(--shadow)}
+.deep-dive h2{font-size:24px;margin-bottom:20px}
+.deep-dive h3{font-size:18px;color:var(--accent);margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--accent)}
+.deep-dive h3:first-of-type{margin-top:0}
+.deep-dive p{font-size:15px;line-height:1.9;color:var(--ink2);margin-bottom:12px}
+.deep-dive ul{margin:0 0 14px 22px}
+.deep-dive li{font-size:14.5px;line-height:1.85;color:var(--ink2);margin-bottom:6px}
+/* Guide steps */
+.steps{display:grid;gap:16px}
+.step{display:flex;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow)}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0}
+.step-content h3{font-size:16.5px;margin-bottom:6px;color:var(--ink)}
+.step-content p{font-size:14px;color:var(--muted);line-height:1.75}
+/* FAQ */
+.faq-list{display:grid;gap:12px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+details summary{padding:16px 22px;font-weight:600;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--ink);transition:.15s}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-size:20px;color:var(--accent);font-weight:400;transition:.2s}
+details[open] summary::after{content:"−"}
+details summary:hover{background:#faf7f2}
+details .faq-body{padding:0 22px 18px;font-size:14.5px;color:var(--ink2);line-height:1.85}
+/* Comments */
+.comment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.comment{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.comment-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+.comment-name{font-weight:600;font-size:14px;color:var(--ink)}
+.comment-time{font-size:12px;color:#aaa;margin-left:auto}
+.comment p{font-size:13.5px;color:var(--ink2);line-height:1.7}
+/* News */
+.news-list{display:grid;gap:16px}
+.news-item{display:grid;grid-template-columns:160px 1fr;gap:20px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+.news-item:hover{box-shadow:0 6px 20px rgba(26,26,46,.1)}
+.news-item img{width:100%;height:100%;object-fit:cover;min-height:110px}
+.news-body{padding:16px 20px 16px 0}
+.news-body .n-date{font-size:12.5px;color:var(--accent);font-weight:600;margin-bottom:4px}
+.news-body h3{font-size:16px;margin-bottom:6px;color:var(--ink)}
+.news-body p{font-size:13.5px;color:var(--muted);line-height:1.7}
+/* Related tags */
+.tag-index{display:flex;flex-wrap:wrap;gap:10px}
+.tag-index a{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:7px 18px;font-size:13.5px;color:var(--ink2);transition:.2s}
+.tag-index a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* Ranking */
+.rank-list{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.rank-item{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.rank-item:last-child{border-bottom:none}
+.rank-num{width:28px;height:28px;border-radius:8px;background:#f3efe9;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--muted);flex-shrink:0}
+.rank-item:nth-child(1) .rank-num{background:var(--accent);color:#fff}
+.rank-item:nth-child(2) .rank-num{background:#f5c518;color:#fff}
+.rank-item:nth-child(3) .rank-num{background:#e0a96d;color:#fff}
+.rank-name{font-weight:600;font-size:14.5px;flex:1;color:var(--ink)}
+.rank-tag{font-size:12px;color:var(--muted);background:#f3efe9;padding:2px 9px;border-radius:5px}
+.rank-score{font-size:13px;color:var(--accent);font-weight:700}
+/* Footer */
+.site-footer{background:var(--ink);color:#c9c9d4;padding:48px 24px 28px;margin-top:20px}
+.footer-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
+.footer-brand{display:flex;flex-direction:column;gap:10px}
+.footer-brand .fb-name{font-size:19px;font-weight:800;color:#fff;display:flex;align-items:center;gap:8px}
+.footer-brand p{font-size:13px;line-height:1.7;color:#9a9aac;max-width:280px}
+.footer-col h4{font-size:14px;color:#fff;margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:#9a9aac;padding:4px 0;transition:.15s}
+.footer-col a:hover{color:var(--accent2)}
+.footer-bottom{max-width:var(--maxw);margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#7a7a8c;text-align:center;line-height:1.8}
+/* Search feedback */
+.no-result{padding:24px;text-align:center;color:var(--muted);font-size:14.5px;display:none}
+/* Responsive */
+@media(max-width:1024px){
+.main-wrap{grid-template-columns:1fr;gap:28px}
+.channel-side{position:static;order:-1}
+.channel-side h2{display:none}
+.channel-list{display:flex;flex-wrap:wrap;gap:4px;padding:6px}
+.channel-list a{padding:7px 13px;font-size:13.5px}
+.hero{grid-template-columns:1fr;gap:28px;padding:36px 24px 28px}
+.hero-visual{height:220px}
+.footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:740px){
+.header-inner{padding:10px 16px;gap:10px}
+.main-nav{order:3;width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+.main-nav a{white-space:nowrap;font-size:13px;padding:5px 9px}
+.header-search{margin-left:auto}
+.header-search input{width:120px;font-size:13px}
+.hero{padding:28px 16px 20px}
+.hero-left h1{font-size:26px}
+.hero-desc{font-size:14.5px}
+.main-wrap{padding:0 16px 40px}
+.deep-dive{padding:22px 18px}
+.card-grid{grid-template-columns:1fr 1fr;gap:12px}
+.card-body{padding:10px 12px 12px}
+.card-body h3{font-size:14px}
+.card-body p{font-size:12.5px}
+.news-item{grid-template-columns:1fr}
+.news-item img{height:160px}
+.news-body{padding:0 16px 16px}
+.cat-grid{grid-template-columns:1fr 1fr}
+.comment-grid{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr;gap:24px}
+.update-item{flex-wrap:wrap;gap:6px}
+.update-item .u-title{min-width:auto}
+.section{margin-bottom:38px;scroll-margin-top:150px}
+.step{padding:16px 18px}
+}
+@media(max-width:380px){
+.card-grid{grid-template-columns:1fr}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+<div class="announce">本周新增 <b>14 条</b>图文图集与短视频合集 · “夜航船”系列第 3 期已上线 · 社区话题“镜头语言与叙事节奏”讨论热度上升</div>
+<header class="site-header">
+<div class="header-inner">
+<a href="#top" class="brand" aria-label="桃色91蘑菇 首页">
+<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1a1a2e"/><circle cx="16" cy="16" r="7" fill="#e94560"/><circle cx="23" cy="9" r="3" fill="#f5c518"/></svg>
+<span class="brand-text">桃色91蘑菇</span>
+</a>
+<nav class="main-nav" aria-label="主题导航">
+<a href="#overview">领域概览</a>
+<a href="#featured">精选条目</a>
+<a href="#updates">最新更新</a>
+<a href="#categories">分类入口</a>
+<a href="#deep-dive">深度解析</a>
+<a href="#guide">体验指南</a>
+<a href="#faq">常见问答</a>
+<a href="#comments">访客评论</a>
+<a href="#news">相关资讯</a>
+<a href="#related">延伸推荐</a>
+<a href="#ranking">热门榜单</a>
+</nav>
+<div class="header-search">
+<input type="search" id="searchInput" placeholder="搜索条目名称或类型…" aria-label="搜索条目名称或类型">
+<button type="button" id="searchBtn">搜索</button>
+</div>
+</div>
+</header>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-left">
+<h1>桃色91蘑菇</h1>
+<p class="hero-desc">汇聚成人向影视资源、图文图集、短视频合集与社区话题的具体条目，按类型、更新节奏与内容形态整理，帮助成年访客快速定位可消费内容并比较不同条目之间的差异。</p>
+<div class="hero-actions">
+<a href="#featured" class="btn-primary">浏览精选条目</a>
+<a href="#categories" class="btn-ghost">按分类查找</a>
+</div>
+</div>
+<div class="hero-visual" aria-hidden="true">
+<svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="40" y="60" width="220" height="160" rx="14" fill="#1a1a2e"/>
+<rect x="56" y="76" width="188" height="100" rx="8" fill="#2d2d44"/>
+<circle cx="150" cy="126" r="26" fill="#e94560" opacity="0.85"/>
+<path d="M138 126l8 8 16-16" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="56" y="186" width="90" height="10" rx="4" fill="#3d3d56"/>
+<rect x="56" y="202" width="140" height="8" rx="3" fill="#3d3d56"/>
+<rect x="290" y="40" width="100" height="130" rx="12" fill="#f5c518" opacity="0.9"/>
+<rect x="304" y="56" width="72" height="60" rx="6" fill="#fff" opacity="0.6"/>
+<circle cx="340" cy="86" r="14" fill="#e94560"/>
+<rect x="304" y="126" width="50" height="7" rx="3" fill="#1a1a2e" opacity="0.4"/>
+<rect x="304" y="140" width="72" height="7" rx="3" fill="#1a1a2e" opacity="0.25"/>
+<rect x="250" y="200" width="140" height="80" rx="12" fill="#fff" stroke="#e8e5e0" stroke-width="2"/>
+<circle cx="278" cy="228" r="12" fill="#e94560" opacity="0.8"/>
+<rect x="300" y="220" width="70" height="8" rx="3" fill="#ddd"/>
+<rect x="300" y="234" width="50" height="6" rx="3" fill="#eee"/>
+<rect x="266" y="252" width="104" height="6" rx="3" fill="#eee"/>
+<circle cx="90" cy="270" r="22" fill="#e94560" opacity="0.15"/>
+<circle cx="90" cy="270" r="10" fill="#e94560" opacity="0.5"/>
+<path d="M270 60l10-18 10 18" stroke="#e94560" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M280 42v-10" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+</div>
+</section>
+
+<div class="main-wrap">
+
+<!-- LEFT CHANNEL SIDEBAR -->
+<aside class="channel-side">
+<h2>频道索引</h2>
+<nav class="channel-list" aria-label="频道分类">
+<a href="#featured" class="active">精选条目</a>
+<a href="#updates">最新更新</a>
+<a href="#categories">分类入口</a>
+<a href="#deep-dive">深度解析</a>
+<a href="#guide">体验指南</a>
+<a href="#faq">常见问答</a>
+<a href="#comments">访客评论</a>
+<a href="#news">相关资讯</a>
+<a href="#related">延伸推荐</a>
+<a href="#ranking">热门榜单</a>
+</nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- 1. OVERVIEW -->
+<section class="section" id="overview">
+<div class="section-head">
+<h2>主题领域概览</h2>
+<p>成人向内容聚合主题通常包含哪些具体方向</p>
+</div>
+<div class="overview-text">
+<p>成人向内容聚合主题涵盖的形态比一般影视站点更杂，粗略可以分成四类。第一类是长篇叙事影视，以剧情片、系列剧为主，单集时长通常在 20 到 60 分钟之间，强调镜头语言和情节推进，观众追的是人物关系和故事走向。第二类是图文图集，以摄影作品、场景写真为主，单组 15 到 40 张，重点在构图、光影与主题一致性，消费方式偏浏览而非追更。第三类是短视频合集，单条 30 秒到 5 分钟，节奏快、信息密度高，适合碎片时间，更新频率往往按日计算。第四类是社区话题与讨论帖，围绕某类内容形态、某组作品或某位创作者展开，本身不直接提供内容，但能帮助判断某条目是否值得投入时间。</p>
+<p>这四类内容在更新节奏上差异明显。短视频合集基本日更甚至一日多更，图文图集多为周更或双周更，长篇影视则按季或按档期推进，社区话题的热度周期通常在三到七天内完成一轮。理解这个节奏差异，是判断“现在该看什么”的第一步：想快速消耗时间就选短视频，想沉浸追故事就选长篇，想找视觉参考就翻图集，想了解某类内容的口碑走向就去看话题讨论。</p>
+<p>当前值得关注的具体方向包括：以“夜航船”为代表的都市夜归题材系列剧，近两周更新到第 3 期；以“雾港”为代表的悬疑短剧合集，单集 12 分钟，适合通勤场景；以“镜面房间”为代表的室内摄影图集，强调单一场景内的多角度变化；以及围绕“镜头语言与叙事节奏”展开的社区讨论，参与人数在本周明显上升。这些条目分别对应不同的消费场景，选择时先明确自己有多少连续时间，再决定打开哪一类。</p>
+</div>
+</section>
+
+<!-- 2. FEATURED -->
+<section class="section" id="featured">
+<div class="section-head">
+<h2>精选内容推荐</h2>
+<p>按类型与更新状态筛选出的具体条目</p>
+</div>
+<div class="card-grid" id="featuredGrid">
+
+<article class="card" data-name="夜航船 第3期 都市夜归系列剧">
+<div class="card-img"><span class="card-badge">系列剧</span><img src="https://picsum.photos/seed/yehangchuan03/400/300" width="400" height="300" loading="lazy" alt="夜航船第3期都市夜归系列剧封面"></div>
+<div class="card-body">
+<h3>夜航船 第3期</h3>
+<div class="tags"><span class="tag">都市夜归</span><span class="tag">系列剧</span><span class="tag">剧情向</span></div>
+<p>以深夜出租车为叙事载体，第 3 期把视角转到乘客侧，单集 28 分钟，三段独立故事共用同一辆车的空间设定。</p>
+<div class="card-meta"><span class="hot">热度 9.2</span><span>11-07 更新</span></div>
+</div>
+</article>
+
+<article class="card" data-name="雾港 悬疑短剧合集">
+<div class="card-img"><span class="card-badge">短剧</span><img src="https://picsum.photos/seed/wugang07/400/300" width="400" height="300" loading="lazy" alt="雾港悬疑短剧合集封面"></div>
+<div class="card-body">
+<h3>雾港</h3>
+<div class="tags"><span class="tag">悬疑</span><span class="tag">短剧</span><span class="tag">通勤场景</span></div>
+<p>单集 12 分钟的海港小镇悬疑线，每集结尾留一个物证线索，适合一次看两到三集，目前已放出前 8 集。</p>
+<div class="card-meta"><span class="hot">热度 8.8</span><span>11-06 更新</span></div>
+</div>
+</article>
+
+<article class="card" data-name="镜面房间 室内摄影图集">
+<div class="card-img"><span class="card-badge">图集</span><img src="https://picsum.photos/seed/jingmianfangjian/400/300" width="400" height="300" loading="lazy" alt="镜面房间室内摄影图集封面"></div>
+<div class="card-body">
+<h3>镜面房间</h3>
+<div class="tags"><span class="tag">室内摄影</span><span class="tag">光影构图</span><span class="tag">图集</span></div>
+<p>同一间 18 平米房间内完成 32 张不同角度拍摄，重点在镜面反射与自然光的变化，适合看构图参考。</p>
+<div class="card-meta"><span class="hot">热度 8.5</span><span>11-04 更新</span></div>
+</div>
+</article>
+
+<article class="card" data-name="深夜电台 声音叙事合集">
+<div class="card-img"><span class="card-badge">音频</span><img src="https://picsum.photos/seed/shenyediantai/400/300" width="400" height="300" loading="lazy" alt="深夜电台声音叙事合集封面"></div>
+<div class="card-body">
+<h3>深夜电台</h3>
+<div class="tags"><span class="tag">声音叙事</span><span class="tag">城市夜话</span><span class="tag">陪伴向</span></div>
+<p>每期 40 分钟的独白式音频，围绕一个城市夜晚的具体地点展开，第 12 期讲的是凌晨四点的便利店。</p>
+<div class="card-meta"><span class="hot">热度 8.1</span><span>11-05 更新</span></div>
+</div>
+</article>
+
+<article class="card" data-name="白噪音公寓 生活流短视频">
+<div class="card-img"><span class="card-badge">短视频</span><img src="https://picsum.photos/seed/baiyinzaogongyu/400/300" width="400" height="300" loading="lazy" alt="白噪音公寓生活流短视频封面"></div>
+<div class="card-body">
+<h3>白噪音公寓</h3>
+<div class="tags"><span class="tag">生活流</span><span class="tag">短视频</span><span class="tag">日更</span></div>
+<p>单条 40 秒到 90 秒的日常片段，固定机位拍公寓窗外的天气与街景，更新稳定，适合当作背景播放。</p>
+<div class="card-meta"><span class="hot">热度 7.9</span><span>今天 09:20</span></div>
+</div>
+</article>
+
+<article class="card" data-name="旧胶片档案 影像修复图集">
+<div class="card-img"><span class="card-badge">图集</span><img src="https://picsum.photos/seed/jiujiaopian/400/300" width="400" height="300" loading="lazy" alt="旧胶片档案影像修复图集封面"></div>
+<div class="card-body">
+<h3>旧胶片档案</h3>
+<div class="tags"><span class="tag">胶片修复</span><span class="tag">年代影像</span><span class="tag">图集</span></div>
+<p>把 1990 年代的街拍底片做数字化修复，每组 20 张，附原始扫描与修复后对照，看的是颗粒与色调处理。</p>
+<div class="card-meta"><span class="hot">热度 7.7</span><span>11-03 更新</span></div>
+</div>
+</article>
+
+<article class="card" data-name="双人餐桌 对话类短剧">
+<div class="card-img"><span class="card-badge">短剧</span><img src="https://picsum.photos/seed/shuangrencanzhuo/400/300" width="400" height="300" loading="lazy" alt="双人餐桌对话类短剧封面"></div>
+<div class="card-body">
+<h3>双人餐桌</h3>
+<div class="tags"><span class="tag">对话驱动</span><span class="tag">双人场景</span><span class="tag">短剧</span></div>
+<p>全片只有一个餐桌场景，两个人全程对话推进，单集 18 分钟，台词密度高，适合喜欢文本感的观众。</p>
+<div class="card-meta"><span class="hot">热度 7.6</span><span>11-02 更新</span></div>
+</div>
+</article>
+
+<article class="card" data-name="夜行地图 城市漫步影像">
+<div class="card-img"><span class="card-badge">影像</span><img src="https://picsum.photos/seed/yexingditu/400/300" width="400" height="300" loading="lazy" alt="夜行地图城市漫步影像封面"></div>
+<div class="card-body">
+<h3>夜行地图</h3>
+<div class="tags"><span class="tag">城市漫步</span><span class="tag">夜间摄影</span><span class="tag">影像</span></div>
+<p>按街道逐个拍摄的夜间漫步影像，每条 6 分钟，配环境原声，已覆盖老城区 9 条街巷。</p>
+<div class="card-meta"><span class="hot">热度 7.4</span><span>11-01 更新</span></div>
+</div>
+</article>
+
+</div>
+<div class="no-result" id="noResult">没有找到匹配的条目，换个关键词试试，比如“短剧”“图集”“夜航船”。</div>
+</section>
+
+<!-- 3. UPDATES -->
+<section class="section" id="updates">
+<div class="section-head">
+<h2>最新更新与动态</h2>
+<p>今日与本周内上线的具体条目变化</p>
+</div>
+<div class="update-list">
+<div class="update-item"><span class="update-dot"></span><span class="u-title">夜航船 第3期</span><span class="u-desc">第 3 集“后座乘客”已上线，单集 28 分钟，三段故事全部放出</span><span class="u-time">今天 10:15</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">白噪音公寓</span><span class="u-desc">今日条目更新为雨窗视角，时长 52 秒，固定机位</span><span class="u-time">今天 09:20</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">雾港</span><span class="u-desc">第 8 集上线，结尾物证为一只旧怀表，前 8 集已可连看</span><span class="u-time">昨天 21:40</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">镜面房间</span><span class="u-desc">图集追加 8 张午后侧光版本，总数更新到 32 张</span><span class="u-time">昨天 16:05</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">深夜电台</span><span class="u-desc">第 12 期“凌晨四点的便利店”上线，时长 41 分钟</span><span class="u-time">11-05 20:30</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">旧胶片档案</span><span class="u-desc">新增一组 1994 年夜市街拍，共 20 张，附扫描原片</span><span class="u-time">11-03 14:20</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">双人餐桌</span><span class="u-desc">第 6 集“关于搬家”上线，台词密度为本季最高</span><span class="u-time">11-02 19:00</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">夜行地图</span><span class="u-desc">老城区第 9 条街巷“槐树巷”影像放出，配环境原声</span><span class="u-time">11-01 22:10</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">社区话题</span><span class="u-desc">“镜头语言与叙事节奏”讨论帖新增 47 条回复，置顶更新</span><span class="u-time">11-07 18:45</span></div>
+<div class="update-item"><span class="update-dot"></span><span class="u-title">雾港</span><span class="u-desc">第 7 集补充字幕版本，修正两处时间轴错位</span><span class="u-time">11-06 11:30</span></div>
+</div>
+</section>
+
+<!-- 4. CATEGORIES -->
+<section class="section" id="categories">
+<div class="section-head">
+<h2>分类入口</h2>
+<p>按内容形态与题材方向划分的八个类别</p>
+</div>
+<div class="cat-grid">
+<a class="cat-item" href="#featured"><div class="c-name">剧情短剧</div><div class="c-count">悬疑 · 对话 · 都市</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">图文图集</div><div class="c-count">室内 · 胶片 · 街拍</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">短视频合集</div><div class="c-count">生活流 · 日常 · 日更</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">声音叙事</div><div class="c-count">电台 · 独白 · 陪伴</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">城市影像</div><div class="c-count">夜行 · 街巷 · 漫步</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">光影摄影</div><div class="c-count">构图 · 自然光 · 室内</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">年代修复</div><div class="c-count">胶片 · 扫描 · 对照</div></a>
+<a class="cat-item" href="#featured"><div class="c-name">社区话题</div><div class="c-count">讨论 · 口碑 · 解析</div></a>
+</div>
+</section>
+
+<!-- 5. DEEP DIVE -->
+<section class="section" id="deep-dive">
+<div class="deep-dive">
+<h2>深度解析：类型差异与判断维度</h2>
+
+<h3>短剧与系列剧的节奏差异</h3>
+<p>短剧和系列剧最直观的区别在单集时长与信息密度。短剧单集通常控制在 8 到 15 分钟，每一集必须完成一个小的起承转合，结尾往往留钩子。系列剧单集 25 到 60 分钟，允许用两到三集铺一条支线，节奏更慢但人物厚度更高。以“雾港”和“夜航船”为例：前者第 8 集用一个怀表物证收束前八集的线索，单集内完成信息回收；后者第 3 期用三段独立故事共用一辆车，每段 9 分钟左右，靠空间统一而不是情节连续来维持整体感。</p>
+<p>判断自己适合哪一类，可以看两个指标。一是可支配的连续时间：少于 15 分钟选短剧，30 分钟以上再开系列剧。二是对“未解信息”的耐受度：短剧几乎每集都留悬念，系列剧的悬念周期更长但更集中。如果讨厌被钩子牵着走，系列剧的单集完整度更友好。</p>
+
+<h3>图集的消费方式与判断标准</h3>
+<p>图文图集不是“看完”型内容，而是“翻阅”型内容。一组 20 到 40 张的图集，实际消费时间通常在 3 到 8 分钟，判断价值主要看三点：主题一致性、单张完成度、组内变化。主题一致性指整组图是否围绕同一个概念推进，“镜面房间”32 张全部在同一间房内完成，主题高度集中；单张完成度看构图与曝光是否经得起单独拿出来看；组内变化看角度、光线、景别是否有层次，避免 30 张长得差不多。</p>
+<ul>
+<li>先看封面与前三张，判断色调与主题是否符合预期。</li>
+<li>翻到中段看是否有视角变化，中段最容易出现重复。</li>
+<li>看末尾是否附拍摄说明或对照原片，有说明的组通常制作更认真。</li>
+<li>“旧胶片档案”这类修复图集，重点看原始扫描与修复后的对比，而不是单看成品。</li>
+</ul>
+
+<h3>短视频合集的更新节奏与筛选</h3>
+<p>短视频合集的核心变量是更新频率与单条质量能否同时维持。日更型条目如“白噪音公寓”，单条 40 到 90 秒，固定机位、固定主题，质量稳定但信息增量小，适合当背景；另一种是周更两到三条的精选型，单条 3 到 5 分钟，制作更重，适合专门坐下来看。筛选时先看最近七天的更新是否连续，再看单条时长是否与描述一致——时长注水是这类内容最常见的问题。</p>
+
+<h3>声音叙事与影像内容的场景区别</h3>
+<p>声音叙事适合通勤、做家务、睡前这类无法持续看屏幕的场景，判断标准是信息是否只靠听就能完整接收。“深夜电台”每期围绕一个具体地点展开，地点描述、环境声、独白三层结构清晰，闭眼听也不丢信息。影像内容则依赖画面，切到后台就损失大半。选择时先问自己当前能不能看屏幕，能看选影像，不能看选音频，这条比题材偏好更优先。</p>
+
+<h3>社区话题在消费决策中的作用</h3>
+<p>社区话题本身不提供内容，但能提供两个关键信息：某条目的实际口碑走向，以及同类条目之间的比较。看讨论帖时优先找带具体集数、具体张数、具体时间点的发言，这类发言信息量大；“好看”“一般”这类判断词参考价值低。本周“镜头语言与叙事节奏”话题上升，本质是观众开始用制作维度而不是题材维度来比较条目，这个转向值得注意。</p>
+</div>
+</section>
+
+<!-- 6. GUIDE -->
+<section class="section" id="guide">
+<div class="section-head">
+<h2>体验指南：内容消费的顺序与判断依据</h2>
+<p>从时间预算出发决定先打开哪一类条目</p>
+</div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><h3>先确认可用时间长度</h3><p>少于 10 分钟直接进短视频合集或图集；10 到 20 分钟选单集短剧；30 分钟以上再考虑系列剧或声音叙事的长节目。时间预算是筛选的第一道闸，比题材偏好更能减少“打开又关掉”的浪费。</p></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><h3>判断条目是否值得投入</h3><p>看三个信号：更新是否连续、单集时长与描述是否一致、是否有具体的制作说明。连续更新说明制作方在正常运转；时长一致说明没有注水；有说明的条目通常对内容本身有要求。</p></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><h3>同类条目之间怎么比较</h3><p>同题材的短剧比“单集信息回收是否干净”，同主题的图集比“组内变化是否足够”，同类型的短视频比“最近七天更新是否稳定”。比较维度要落在可观察的制作层面，而不是笼统的好看与否。</p></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content"><h3>用社区话题做二次确认</h3><p>决定追某条目前，翻一下相关讨论帖里带具体集数的发言。如果讨论集中在某一集的某个处理上，说明观众真的在细看；如果只有泛泛评价，参考价值有限。</p></div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content"><h3>建立自己的条目清单</h3><p>把“看完了”和“想再看”分开记录。系列剧记到具体集数，图集记到具体组名，短视频记到更新日期。清单积累两三周后，就能看出自己真正偏好的类型，而不是被推荐牵着走。</p></div></div>
+</div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="section" id="faq">
+<div class="section-head">
+<h2>常见问答</h2>
+<p>围绕类型、更新与选择的具体问题</p>
+</div>
+<div class="faq-list">
+<details><summary>短剧一般多久更新一集？</summary><div class="faq-body">日更型短剧每天一集，周更型通常每周两到三集，按季推进的系列短剧可能一周一集。以“雾港”为例，前 8 集在两周内放完，属于集中更新型；判断节奏时看最近七天的更新记录比看官方说明更准。</div></details>
+<details><summary>系列剧和短剧最大的区别是什么？</summary><div class="faq-body">核心区别在单集时长和信息结构。短剧单集 8 到 15 分钟，每集必须完成一个小闭环并留钩子；系列剧单集 25 到 60 分钟，允许多集铺一条支线，人物和情节的展开空间更大。时间有限选短剧，想追人物关系选系列剧。</div></details>
+<details><summary>第一次接触这类内容从哪个条目开始比较好？</summary><div class="faq-body">建议从单集完整的短剧或单组图集入手，先建立对类型的判断。短剧可以从“雾港”前两集开始，每集 12 分钟，成本低；图集可以从“镜面房间”开始，32 张主题集中，容易看出组内变化的差别。看完再决定要不要进入更长的系列。</div></details>
+<details><summary>图集类内容怎么判断质量高低？</summary><div class="faq-body">看三点：主题是否集中、单张是否经得起单独看、组内是否有角度和光线变化。主题集中说明拍摄前有规划；单张完成度看构图和曝光；组内变化看中段是否出现重复。附原始扫描或拍摄说明的图集通常制作更认真。</div></details>
+<details><summary>声音叙事类内容适合什么场景听？</summary><div class="faq-body">适合通勤、做家务、睡前这类无法持续看屏幕的场景。判断标准是信息是否只靠听就能完整接收，地点描述、环境声、叙述层次清楚的节目闭眼听也不丢信息。“深夜电台”每期围绕一个具体地点展开，属于这类结构清晰的节目。</div></details>
+<details><summary>社区讨论里的评价该怎么参考？</summary><div class="faq-body">优先看带具体集数、具体张数、具体时间点的发言，这类评价信息量大、可验证；只有“好看”“一般”这类判断词的发言参考价值低。本周“镜头语言与叙事节奏”话题的讨论集中在具体镜头的处理上，属于信息密度较高的一类讨论。</div></details>
+</div>
+</section>
+
+<!-- 8. COMMENTS -->
+<section class="section" id="comments">
+<div class="section-head">
+<h2>访客评论</h2>
+<p>围绕具体条目与类型的真实语气反馈</p>
+</div>
+<div class="comment-grid">
+<div class="comment"><div class="comment-head"><div class="avatar">夜</div><span class="comment-name">夜航乘客</span><span class="comment-time">今天 11:02</span></div><p>夜航船第 3 期后座乘客那段，全程没换场景但一点不闷，台词写得比前两期紧。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">雾</div><span class="comment-name">雾港常客</span><span class="comment-time">今天 10:30</span></div><p>雾港第 8 集那个怀表线索回收得挺干净，前七集埋的点基本都用上了，短剧能做到这个完成度不容易。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">镜</div><span class="comment-name">镜面观察</span><span class="comment-time">昨天 22:15</span></div><p>镜面房间中段有几张角度重复了，不过午后侧光那 8 张质量明显高一档，整体还是值得翻。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">白</div><span class="comment-name">白噪日常</span><span class="comment-time">昨天 19:40</span></div><p>白噪音公寓当背景放很合适，缺点是最近几天都是雨窗，主题有点单一了。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">深</div><span class="comment-name">深夜频率</span><span class="comment-time">11-07 23:10</span></div><p>深夜电台第 12 期便利店那段，环境声处理得比前几期细，闭眼听完全能跟上。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">旧</div><span class="comment-name">旧片收藏</span><span class="comment-time">11-07 16:25</span></div><p>旧胶片档案的 1994 夜市组，修复色调偏冷，跟原扫描对比看差异挺明显，个人更喜欢原片的颗粒感。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">双</div><span class="comment-name">双人桌边</span><span class="comment-time">11-06 21:00</span></div><p>双人餐桌第 6 集台词密度确实高，但两个人坐着说话 18 分钟，看久了会有点累，得分两次看。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">夜</div><span class="comment-name">夜行记录</span><span class="comment-time">11-06 20:12</span></div><p>夜行地图槐树巷那条环境原声做得不错，能听出巷子里的回声，比其他几条更真实。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">通</div><span class="comment-name">通勤党</span><span class="comment-time">11-05 08:45</span></div><p>雾港单集 12 分钟正好一趟地铁看完，比刷短视频有连续感，推荐给时间碎片但想看完整故事的人。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">光</div><span class="comment-name">光影笔记</span><span class="comment-time">11-04 19:30</span></div><p>镜面房间的自然光变化是最大看点，同一间房从早到晚拍出完全不同感觉，构图参考价值高。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">话</div><span class="comment-name">话题潜水</span><span class="comment-time">11-04 15:10</span></div><p>镜头语言那个讨论帖里有几个人分析得很细，按镜头逐一拆，比看条目本身还有收获。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">夜</div><span class="comment-name">夜班归来</span><span class="comment-time">11-03 23:55</span></div><p>夜航船第 2 期比第 3 期好，第 3 期三段故事里中间那段节奏有点拖，整体还是能看。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">短</div><span class="comment-name">短剧筛选</span><span class="comment-time">11-03 14:20</span></div><p>最近短剧更新挺密的，但注水也明显，雾港算控制得好的，单集时长一直稳定在 12 分钟左右。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">电</div><span class="comment-name">电台听众</span><span class="comment-time">11-02 22:40</span></div><p>深夜电台前几期地点描述太抽象，第 12 期具体到便利店货架，听感一下子实了，希望保持。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">胶</div><span class="comment-name">胶片边缘</span><span class="comment-time">11-02 11:15</span></div><p>旧胶片档案修复版和原片对照看更有意思，单看修复版反而少了年代感，建议两组一起翻。</p></div>
+<div class="comment"><div class="comment-head"><div class="avatar">街</div><span class="comment-name">街巷漫游</span><span class="comment-time">11-01 21:30</span></div><p>夜行地图覆盖的街巷越来越偏了，槐树巷这种小地方都拍到了，比只拍主干道有意思。</p></div>
+</div>
+</section>
+
+<!-- 9. NEWS -->
+<section class="section" id="news">
+<div class="section-head">
+<h2>相关资讯</h2>
+<p>近一周内与具体条目、类型变化有关的动态</p>
+</div>
+<div class="news-list">
+<div class="news-item">
+<img src="https://picsum.photos/seed/wugang-news08/600/400" width="600" height="400" loading="lazy" alt="雾港第八集怀表线索剧照">
+<div class="news-body"><div class="n-date">2026-11-07</div><h3>《雾港》第 8 集收束前八集线索，怀表物证成讨论焦点</h3><p>前八集埋下的时间线疑点在这一集集中回收，社区讨论集中在物证出现的时间顺序，单集时长维持在 12 分钟。</p></div>
+</div>
+<div class="news-item">
+<img src="https://picsum.photos/seed/yehangchuan-news03/600/400" width="600" height="400" loading="lazy" alt="夜航船第三期出租车后座场景">
+<div class="news-body"><div class="n-date">2026-11-06</div><h3>“夜航船”第 3 期改为乘客视角，三段故事共用同一车内空间</h3><p>与前两期司机视角不同，本期从乘客侧展开，单集 28 分钟，三段独立故事靠空间统一而非情节连续串联。</p></div>
+</div>
+<div class="news-item">
+<img src="https://picsum.photos/seed/jingmian-news32/600/400" width="600" height="400" loading="lazy" alt="镜面房间午后侧光版本摄影">
+<div class="news-body"><div class="n-date">2026-11-05</div><h3>“镜面房间”追加午后侧光版本，图集总数更新至 32 张</h3><p>新增的 8 张集中在下午两点到四点之间拍摄，重点呈现同一房间内自然光角度变化对构图的影响。</p></div>
+</div>
+<div class="news-item">
+<img src="https://picsum.photos/seed/shenye-news12/600/400" width="600" height="400" loading="lazy" alt="深夜电台便利店场景声音叙事">
+<div class="news-body"><div class="n-date">2026-11-05</div><h3>“深夜电台”第 12 期转向具体地点，便利店场景成叙事核心</h3><p>本期时长 41 分钟，围绕凌晨四点的便利店展开，环境声采集比前几期更细，地点描述从抽象转向具体。</p></div>
+</div>
+<div class="news-item">
+<img src="https://picsum.photos/seed/huati-news47/600/400" width="600" height="400" loading="lazy" alt="镜头语言与叙事节奏社区讨论帖">
+<div class="news-body"><div class="n-date">2026-11-04</div><h3>社区话题“镜头语言与叙事节奏”回复数升至 47 条</h3><p>讨论从题材偏好转向制作维度，多条发言按镜头逐一拆解，成为本周社区信息密度最高的话题之一。</p></div>
+</div>
+<div class="news-item">
+<img src="https://picsum.photos/seed/jiujiaopian-news94/600/400" width="600" height="400" loading="lazy" alt="旧胶片档案1994夜市街拍修复">
+<div class="news-body"><div class="n-date">2026-11-03</div><h3>“旧胶片档案”新增 1994 年夜市街拍组，附原始扫描对照</h3><p>本组共 20 张，修复版色调偏冷，与原始扫描并列展示，重点在颗粒保留与色调还原之间的取舍。</p></div>
+</div>
+</div>
+</section>
+
+<!-- 10. RELATED -->
+<section class="section" id="related">
+<div class="section-head">
+<h2>相关推荐</h2>
+<p>延伸方向与具体条目索引</p>
+</div>
+<div class="tag-index">
+<a href="#featured">夜航船 乘客视角</a>
+<a href="#featured">雾港 物证线索梳理</a>
+<a href="#featured">镜面房间 午后侧光</a>
+<a href="#featured">旧胶片 1994 夜市</a>
+<a href="#featured">深夜电台 便利店场景</a>
+<a href="#featured">双人餐桌 对话驱动短剧</a>
+<a href="#featured">夜行地图 街巷原声</a>
+<a href="#featured">白噪音公寓 雨窗视角</a>
+</div>
+</section>
+
+<!-- 11. RANKING -->
+<section class="section" id="ranking">
+<div class="section-head">
+<h2>本周热门榜单</h2>
+<p>按更新完整度与讨论热度综合排列</p>
+</div>
+<div class="rank-list">
+<div class="rank-item"><span class="rank-num">1</span><span class="rank-name">夜航船 第3期</span><span class="rank-tag">系列剧</span><span class="rank-score">9.2</span></div>
+<div class="rank-item"><span class="rank-num">2</span><span class="rank-name">雾港</span><span class="rank-tag">短剧</span><span class="rank-score">8.8</span></div>
+<div class="rank-item"><span class="rank-num">3</span><span class="rank-name">镜面房间</span><span class="rank-tag">图集</span><span class="rank-score">8.5</span></div>
+<div class="rank-item"><span class="rank-num">4</span><span class="rank-name">深夜电台</span><span class="rank-tag">音频</span><span class="rank-score">8.1</span></div>
+<div class="rank-item"><span class="rank-num">5</span><span class="rank-name">白噪音公寓</span><span class="rank-tag">短视频</span><span class="rank-score">7.9</span></div>
+<div class="rank-item"><span class="rank-num">6</span><span class="rank-name">旧胶片档案</span><span class="rank-tag">图集</span><span class="rank-score">7.7</span></div>
+<div class="rank-item"><span class="rank-num">7</span><span class="rank-name">双人餐桌</span><span class="rank-tag">短剧</span><span class="rank-score">7.6</span></div>
+<div class="rank-item"><span class="rank-num">8</span><span class="rank-name">夜行地图</span><span class="rank-tag">影像</span><span class="rank-score">7.4</span></div>
+</div>
+</section>
+
+</div><!-- /main-content -->
+</div><!-- /main-wrap -->
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-inner">
+<div class="footer-brand">
+<div class="fb-name">
+<svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#e94560"/><circle cx="16" cy="16" r="7" fill="#1a1a2e"/><circle cx="23" cy="9" r="3" fill="#f5c518"/></svg>
+桃色91蘑菇
+</div>
+<p>汇聚成人向影视资源、图文图集、短视频合集与社区话题的具体条目，按类型与更新节奏整理，帮助成年访客定位可消费内容。</p>
+</div>
+<div class="footer-col"><h4>内容分类</h4><a href="#featured">剧情短剧</a><a href="#featured">图文图集</a><a href="#featured">短视频合集</a><a href="#featured">声音叙事</a></div>
+<div class="footer-col"><h4>发现入口</h4><a href="#updates">最新更新</a><a href="#ranking">热门榜单</a><a href="#deep-dive">深度解析</a><a href="#guide">体验指南</a></div>
+<div class="footer-col"><h4>参与讨论</h4><a href="#faq">常见问答</a><a href="#comments">访客评论</a><a href="#news">相关资讯</a><a href="#related">延伸推荐</a></div>
+</div>
+<div class="footer-bottom">
+部分内容为示例数据，仅用于展示页面结构。<br>
+© 2026 桃色91蘑菇 · 本站为成人向内容聚合主题展示页，仅面向成年访客。
+</div>
+</footer>
+
+<script>
+(function(){
+var input=document.getElementById('searchInput');
+var btn=document.getElementById('searchBtn');
+var grid=document.getElementById('featuredGrid');
+var noResult=document.getElementById('noResult');
+var cards=grid.querySelectorAll('.card');
+function doSearch(){
+var q=input.value.trim().toLowerCase();
+var found=0;
+cards.forEach(function(card){
+var name=(card.getAttribute('data-name')||'').toLowerCase();
+var text=card.textContent.toLowerCase();
+if(!q||name.indexOf(q)>-1||text.indexOf(q)>-1){card.style.display='';found++;}
+else{card.style.display='none';}
+});
+noResult.style.display=found===0?'block':'none';
+}
+btn.addEventListener('click',doSearch);
+input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doSearch();}});
+input.addEventListener('input',function(){if(!input.value.trim())doSearch();});
+})();
+</script>
+
+</body>
+  </html>
