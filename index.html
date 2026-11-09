@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茄子抖音短视频 - 搞笑日常与创意挑战合集</title>
+<meta name="description" content="茄子抖音短视频聚合搞笑日常、创意挑战、美食探店、生活妙招等热门短视频条目，包含最新更新、分类筛选与深度解析，适合喜欢刷短视频找乐子的用户浏览。">
+<meta name="keywords" content="搞笑短视频,创意挑战,美食探店,生活妙招,抖音热门">
+<style>
+:root{
+  --bg:#f8f6f2;
+  --panel:#ffffff;
+  --ink:#1f1f1f;
+  --ink-soft:#555;
+  --line:#e6e0d8;
+  --brand:#6b2d1f;
+  --brand-soft:#f3e6df;
+  --accent:#d94f2b;
+  --accent-soft:#fdeee8;
+  --blue:#2b5d8c;
+  --blue-soft:#e8f0f7;
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow:0 2px 8px rgba(0,0,0,.06);
+  --header-h:64px;
+  --announce-h:40px;
+  --max-w:1280px;
+  --font:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--announce-h) + var(--header-h) + 12px);}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+button{font-family:inherit;cursor:pointer;}
+
+/* 吸顶公告条 */
+.announce-bar{
+  position:sticky;top:0;z-index:60;
+  height:var(--announce-h);
+  background:linear-gradient(90deg,var(--brand),var(--accent));
+  color:#fff;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  gap:12px;padding:0 16px;overflow:hidden;white-space:nowrap;
+}
+.announce-bar .dot{width:6px;height:6px;border-radius:50%;background:#ffd9c9;animation:pulse 1.6s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* 吸顶页头 */
+.site-header{
+  position:sticky;top:var(--announce-h);z-index:50;
+  height:var(--header-h);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;
+  padding:0 20px;
+}
+.header-inner{
+  max-width:var(--max-w);margin:0 auto;width:100%;
+  display:flex;align-items:center;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.brand-mark{width:36px;height:36px;flex-shrink:0;}
+.brand-text{font-size:18px;font-weight:700;color:var(--brand);letter-spacing:.5px;white-space:nowrap;}
+.main-nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:8px;}
+.main-nav a{
+  font-size:13.5px;color:var(--ink-soft);padding:6px 10px;border-radius:6px;
+  transition:.2s;white-space:nowrap;
+}
+.main-nav a:hover,.main-nav a:focus-visible{background:var(--brand-soft);color:var(--brand);outline:2px solid transparent;}
+.header-search{
+  margin-left:auto;display:flex;align-items:center;gap:6px;
+  background:var(--bg);border:1px solid var(--line);border-radius:999px;
+  padding:4px 12px;min-width:160px;
+}
+.header-search input{
+  border:none;background:transparent;outline:none;font-size:13px;
+  width:110px;color:var(--ink);
+}
+.header-search button{
+  border:none;background:var(--brand);color:#fff;border-radius:999px;
+  padding:3px 10px;font-size:12px;
+}
+.header-search button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+/* 首屏 */
+.hero{
+  max-width:var(--max-w);margin:0 auto;padding:32px 20px 12px;
+  display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center;
+}
+.hero-content h1{
+  font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--brand);
+  line-height:1.25;margin-bottom:14px;letter-spacing:-.5px;
+}
+.hero-sub{
+  font-size:16px;color:var(--ink-soft);max-width:560px;margin-bottom:20px;
+}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--brand);color:#fff;padding:10px 22px;border-radius:999px;
+  font-size:14px;font-weight:600;border:none;transition:.2s;
+}
+.btn-primary:hover{background:var(--accent);}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--panel);color:var(--brand);padding:10px 20px;border-radius:999px;
+  font-size:14px;font-weight:600;border:1px solid var(--line);transition:.2s;
+}
+.btn-ghost:hover{border-color:var(--brand);background:var(--brand-soft);}
+.hero-visual{
+  display:flex;justify-content:center;align-items:center;
+}
+.hero-svg-wrap{
+  width:100%;max-width:340px;aspect-ratio:1/1;
+  background:var(--accent-soft);border-radius:24px;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;position:relative;overflow:hidden;
+}
+.hero-svg-wrap svg{width:100%;height:auto;}
+
+/* 主内容布局：三栏门户 */
+.layout{
+  max-width:var(--max-w);margin:0 auto;padding:12px 20px 40px;
+  display:grid;grid-template-columns:170px minmax(0,1fr) 250px;gap:24px;
+  align-items:start;
+}
+.channel-index{
+  background:var(--panel);border-radius:var(--radius);border:1px solid var(--line);
+  padding:14px 10px;position:sticky;top:calc(var(--announce-h) + var(--header-h) + 12px);
+}
+.channel-index h2{
+  font-size:13px;color:var(--ink-soft);font-weight:600;
+  padding:0 8px 8px;border-bottom:1px solid var(--line);margin-bottom:6px;
+  letter-spacing:.5px;
+}
+.channel-index ul{list-style:none;}
+.channel-index li a{
+  display:block;font-size:13.5px;padding:7px 8px;border-radius:6px;
+  color:var(--ink-soft);transition:.2s;
+}
+.channel-index li a:hover,.channel-index li a:focus-visible{background:var(--brand-soft);color:var(--brand);}
+.channel-index li a .count{float:right;font-size:11px;color:#aaa;}
+
+/* 主内容 */
+.main-content{min-width:0;display:flex;flex-direction:column;gap:28px;}
+.section{
+  background:var(--panel);border-radius:var(--radius);border:1px solid var(--line);
+  padding:22px 20px;box-shadow:var(--shadow);
+}
+.section-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin-bottom:16px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-size:19px;font-weight:700;color:var(--brand);
+  position:relative;padding-left:12px;
+}
+.section-head h2::before{
+  content:"";position:absolute;left:0;top:3px;bottom:3px;width:4px;
+  background:var(--accent);border-radius:2px;
+}
+.section-head .more-link{font-size:12.5px;color:var(--ink-soft);}
+.section-head .more-link:hover{color:var(--accent);}
+
+/* 概述 */
+.overview-text{font-size:14.5px;color:var(--ink-soft);line-height:1.9;}
+.overview-text p{margin-bottom:12px;}
+.overview-text p:last-child{margin-bottom:0;}
+
+/* 精选卡片网格 */
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;
+}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;
+  background:var(--panel);transition:.2s;display:flex;flex-direction:column;
+}
+.card:hover{box-shadow:0 4px 16px rgba(107,45,31,.1);transform:translateY(-2px);}
+.card-img{width:100%;height:130px;object-fit:cover;background:var(--brand-soft);}
+.card-body{padding:10px 12px 12px;flex:1;display:flex;flex-direction:column;gap:6px;}
+.card-tag{
+  display:inline-block;font-size:11px;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);padding:2px 8px;border-radius:999px;align-self:flex-start;
+}
+.card-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.4;}
+.card-desc{font-size:12.5px;color:var(--ink-soft);line-height:1.6;flex:1;}
+.card-meta{display:flex;justify-content:space-between;font-size:11px;color:#999;margin-top:2px;}
+.card-meta .hot{color:var(--accent);font-weight:600;}
+
+/* 更新列表 */
+.update-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.update-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 0;border-bottom:1px dashed var(--line);
+}
+.update-list li:last-child{border-bottom:none;padding-bottom:0;}
+.update-time{
+  font-size:11.5px;color:#bbb;white-space:nowrap;min-width:64px;padding-top:3px;
+}
+.update-info{flex:1;min-width:0;}
+.update-info strong{font-size:13.5px;color:var(--ink);font-weight:600;}
+.update-info span{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:1px;}
+.update-tag{
+  font-size:10.5px;padding:1px 7px;border-radius:999px;
+  background:var(--blue-soft);color:var(--blue);white-space:nowrap;
+  margin-left:6px;
+}
+
+/* 分类入口 */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;
+}
+.cat-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:14px 8px;border-radius:var(--radius-sm);
+  background:var(--bg);border:1px solid transparent;transition:.2s;
+  font-size:13px;color:var(--ink-soft);font-weight:600;text-align:center;
+}
+.cat-item:hover{border-color:var(--brand);background:var(--brand-soft);color:var(--brand);}
+.cat-icon{
+  width:34px;height:34px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;background:var(--panel);box-shadow:var(--shadow);
+}
+
+/* 深度解析 */
+.deep-dive h3{
+  font-size:15.5px;font-weight:700;color:var(--brand);
+  margin:18px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line);
+}
+.deep-dive h3:first-child{margin-top:0;}
+.deep-dive p{font-size:14px;color:var(--ink-soft);margin-bottom:10px;line-height:1.85;}
+.deep-dive ul{padding-left:20px;margin-bottom:12px;}
+.deep-dive li{font-size:13.5px;color:var(--ink-soft);margin-bottom:5px;line-height:1.7;}
+.deep-dive strong{color:var(--ink);}
+
+/* 体验指南 */
+.guide-steps{list-style:none;counter-reset:step;}
+.guide-steps li{
+  counter-increment:step;position:relative;padding:12px 0 12px 42px;
+  border-bottom:1px dashed var(--line);font-size:13.5px;
+}
+.guide-steps li:last-child{border-bottom:none;}
+.guide-steps li::before{
+  content:counter(step);position:absolute;left:0;top:12px;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--brand);color:#fff;font-size:12.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.guide-steps strong{display:block;font-size:14px;color:var(--ink);margin-bottom:2px;}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:8px;}
+.faq-list details{
+  border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:0 14px;background:var(--bg);transition:.2s;
+}
+.faq-list details[open]{border-color:var(--brand);background:var(--brand-soft);}
+.faq-list summary{
+  font-size:13.5px;font-weight:600;color:var(--ink);
+  padding:11px 0;cursor:pointer;list-style:none;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.faq-list summary::-webkit-details-marker{display:none;}
+.faq-list summary::after{
+  content:"+";font-size:18px;font-weight:400;color:var(--accent);
+  transition:.2s;flex-shrink:0;
+}
+.faq-list details[open] summary::after{content:"−";}
+.faq-list .faq-answer{
+  font-size:13px;color:var(--ink-soft);padding:0 0 12px;line-height:1.8;
+}
+
+/* 用户评论 */
+.comment-list{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;
+}
+.comment-card{
+  background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;
+  border:1px solid transparent;transition:.2s;
+}
+.comment-card:hover{border-color:var(--line);}
+.comment-user{
+  display:flex;align-items:center;gap:6px;margin-bottom:5px;
+}
+.comment-avatar{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--brand-soft);color:var(--brand);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;flex-shrink:0;
+}
+.comment-name{font-size:12px;font-weight:600;color:var(--ink);}
+.comment-text{font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+.comment-item-tag{
+  display:inline-block;font-size:10.5px;color:var(--blue);
+  background:var(--blue-soft);padding:0 6px;border-radius:4px;margin-top:4px;
+}
+
+/* 相关资讯 */
+.news-list{display:flex;flex-direction:column;gap:12px;}
+.news-item{
+  display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;
+}
+.news-thumb{
+  width:80px;height:60px;object-fit:cover;border-radius:var(--radius-sm);
+  background:var(--brand-soft);
+}
+.news-body h4{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:2px;}
+.news-body .news-date{font-size:11px;color:#aaa;}
+.news-body p{font-size:12.5px;color:var(--ink-soft);margin-top:2px;line-height:1.55;}
+
+/* 相关推荐标签索引 */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;}
+.tag-cloud a{
+  font-size:12.5px;padding:5px 12px;border-radius:999px;
+  background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);
+  transition:.2s;
+}
+.tag-cloud a:hover{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+/* 热门榜单 */
+.rank-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.rank-list li{
+  display:flex;align-items:center;gap:10px;padding:9px 0;
+  border-bottom:1px dashed var(--line);font-size:13.5px;
+}
+.rank-list li:last-child{border-bottom:none;}
+.rank-num{
+  width:22px;height:22px;border-radius:6px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11.5px;font-weight:700;color:var(--ink-soft);flex-shrink:0;
+}
+.rank-list li:nth-child(1) .rank-num{background:var(--accent);color:#fff;}
+.rank-list li:nth-child(2) .rank-num{background:var(--brand);color:#fff;}
+.rank-list li:nth-child(3) .rank-num{background:var(--blue);color:#fff;}
+.rank-name{flex:1;font-weight:600;min-width:0;}
+.rank-heat{font-size:11.5px;color:var(--accent);font-weight:600;white-space:nowrap;}
+
+/* 侧边栏 */
+.sidebar{
+  display:flex;flex-direction:column;gap:20px;
+  position:sticky;top:calc(var(--announce-h) + var(--header-h) + 12px);
+}
+.side-card{
+  background:var(--panel);border-radius:var(--radius);border:1px solid var(--line);
+  padding:16px;box-shadow:var(--shadow);
+}
+.side-card h3{
+  font-size:14px;font-weight:700;color:var(--brand);margin-bottom:10px;
+  padding-bottom:6px;border-bottom:1px solid var(--line);
+}
+.side-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.side-list li a{
+  font-size:12.5px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:8px;
+}
+.side-list li a:hover{color:var(--accent);}
+.side-list li a span{color:#bbb;font-size:11px;white-space:nowrap;}
+
+/* 页尾 */
+.site-footer{
+  background:var(--brand);color:#f0e6e1;margin-top:20px;
+  padding:36px 20px 24px;
+}
+.footer-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;
+}
+.footer-brand .brand-text{color:#fff;font-size:18px;font-weight:700;margin-bottom:8px;display:block;}
+.footer-brand p{font-size:12.5px;color:#d4c0b8;line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:.5px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.footer-col a{font-size:12.5px;color:#d4c0b8;transition:.2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{
+  max-width:var(--max-w);margin:24px auto 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.15);
+  font-size:11.5px;color:#c4aea5;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+
+/* 响应式 */
+@media (max-width:1024px){
+  .layout{grid-template-columns:1fr 240px;}
+  .channel-index{display:none;}
+  .hero{grid-template-columns:1fr;gap:20px;}
+  .hero-visual{order:-1;justify-content:flex-start;}
+  .hero-svg-wrap{max-width:220px;}
+  .sidebar{position:static;}
+}
+@media (max-width:740px){
+  .layout{grid-template-columns:1fr;padding:8px 12px 24px;}
+  .sidebar{order:2;}
+  .main-nav{display:none;}
+  .header-search{min-width:120px;}
+  .header-search input{width:80px;}
+  .hero{padding:20px 12px 8px;}
+  .footer-inner{grid-template-columns:1fr;gap:20px;}
+  .comment-list{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .news-item{grid-template-columns:70px 1fr;}
+  .news-thumb{width:70px;height:52px;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="announce-bar" role="status">
+  <span class="dot"></span>
+  <span>本周新增 18 条搞笑短视频 · “办公室迷惑行为”合辑更新至第 12 集 · 11 月 7 日创意挑战赛结果公布</span>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/#hero" class="brand" aria-label="茄子抖音短视频 首页">
+      <svg class="brand-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect width="36" height="36" rx="10" fill="#6b2d1f"/>
+        <path d="M12 26c0-7 3-11 8-11 4 0 6 2 6 5s-2 5-5 5c-2 0-3-1-3-2 0-2 1-3 3-3" stroke="#fdeee8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="15" cy="12" r="2" fill="#d94f2b"/>
+      </svg>
+      <span class="brand-text">茄子抖音短视频</span>
+    </a>
+    <nav class="main-nav" aria-label="频道导航">
+      <a href="/#category">分类入口</a>
+      <a href="/#featured">精选推荐</a>
+      <a href="/#updates">最新更新</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+    </nav>
+    <form class="header-search" role="search" onsubmit="return filterPage(event)">
+      <input type="search" id="searchInput" placeholder="搜索条目…" aria-label="搜索短视频条目">
+      <button type="submit">搜索</button>
+    </form>
+  </div>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>茄子抖音短视频</h1>
+    <p class="hero-sub">汇聚搞笑日常、创意挑战、美食探店、生活妙招和萌宠记录等热门短视频条目，提供最新更新、分类筛选和深度解析，帮你在碎片时间快速找到下饭内容。</p>
+    <div class="hero-actions">
+      <a href="/#featured" class="btn-primary">浏览精选条目</a>
+      <a href="/#updates" class="btn-ghost">查看今日更新</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-svg-wrap">
+      <svg viewBox="0 0 280 280" fill="none" aria-hidden="true">
+        <rect x="30" y="20" width="220" height="240" rx="28" fill="#fff" stroke="#6b2d1f" stroke-width="2"/>
+        <rect x="55" y="50" width="170" height="120" rx="12" fill="#fdeee8"/>
+        <circle cx="100" cy="110" r="28" fill="#d94f2b" opacity=".9"/>
+        <path d="M94 98l16 12-16 12V98z" fill="#fff"/>
+        <rect x="55" y="185" width="100" height="10" rx="5" fill="#f3e6df"/>
+        <rect x="55" y="205" width="140" height="10" rx="5" fill="#f3e6df"/>
+        <rect x="55" y="225" width="80" height="10" rx="5" fill="#e6e0d8"/>
+        <circle cx="210" cy="70" r="14" fill="#d94f2b"/>
+        <path d="M205 70h10M210 65v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 主内容三栏布局 -->
+<div class="layout">
+
+  <!-- 左侧频道索引 -->
+  <aside class="channel-index" aria-label="频道索引">
+    <h2>频道索引</h2>
+    <ul>
+      <li><a href="/#category">搞笑日常 <span class="count">42</span></a></li>
+      <li><a href="/#category">创意挑战 <span class="count">36</span></a></li>
+      <li><a href="/#category">美食探店 <span class="count">28</span></a></li>
+      <li><a href="/#category">生活妙招 <span class="count">24</span></a></li>
+      <li><a href="/#category">萌宠记录 <span class="count">19</span></a></li>
+      <li><a href="/#category">健身跟练 <span class="count">17</span></a></li>
+      <li><a href="/#category">旅行随拍 <span class="count">15</span></a></li>
+      <li><a href="/#category">剧情短剧 <span class="count">13</span></a></li>
+      <li><a href="/#featured">精选推荐</a></li>
+      <li><a href="/#updates">最新更新</a></li>
+      <li><a href="/#deep-dive">深度解析</a></li>
+      <li><a href="/#guide">体验指南</a></li>
+      <li><a href="/#faq">常见问答</a></li>
+      <li><a href="/#comments">用户评论</a></li>
+      <li><a href="/#news">相关资讯</a></li>
+      <li><a href="/#ranking">热门榜单</a></li>
+    </ul>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content" id="main-content">
+
+    <!-- 1. 主题领域概览 -->
+    <section class="section" id="overview">
+      <div class="section-head"><h2>短视频内容领域概览</h2></div>
+      <div class="overview-text">
+        <p>短视频内容按创作方向大致分为搞笑日常、创意挑战、美食探店、生活妙招、萌宠记录、健身跟练、旅行随拍和剧情短剧八大类。搞笑日常以生活场景中的意外反转和语言梗为核心，创意挑战侧重参与感和话题性，美食探店聚焦店铺真实体验和菜品细节，生活妙招则强调实用性和可复现性。</p>
+        <p>当前值得关注的几个方向：办公室场景短剧在 2026 年秋季持续走热，“工位迷惑行为”系列单条平均点赞超过 8 万；创意挑战类中的“15 秒料理改造”话题累计播放量突破 2 亿次；美食探店方面，二三线城市街头小吃探访的完播率明显高于连锁品牌测评。萌宠记录中，猫咪行为解读类内容互动率最高，平均评论数是其他类型的 2.3 倍。</p>
+        <p>从消费角度看，搞笑日常适合碎片时间放松，创意挑战适合寻找参与灵感，美食探店适合出行前做功课，生活妙招则更适合收藏后实操。不同类别的内容在时长、节奏和信息密度上差异明显，选择时可以根据当下需求匹配。</p>
+      </div>
+    </section>
+
+    <!-- 2. 精选内容推荐 -->
+    <section class="section" id="featured">
+      <div class="section-head">
+        <h2>精选短视频条目推荐</h2>
+        <a href="/#ranking" class="more-link">查看热门榜单 →</a>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <img class="card-img" src="https://picsum.photos/seed/qiezi-office01/400/300" alt="办公室迷惑行为短剧封面" width="400" height="300" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">搞笑日常</span>
+            <h3 class="card-title">办公室迷惑行为·第12集：打印机卡纸引发的连环误会</h3>
+            <p class="card-desc">行政小刘修打印机时误触群发键，把吐槽老板的草稿发到了全公司大群。围绕这条消息的撤回倒计时展开的 3 分钟短剧，节奏紧凑，反转合理。</p>
+            <div class="card-meta"><span>更新：11月7日</span><span class="hot">热度 9.2万</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-img" src="https://picsum.photos/seed/qiezi-challenge02/400/300" alt="15秒料理改造挑战封面" width="400" height="300" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">创意挑战</span>
+            <h3 class="card-title">15秒料理改造：便利店饭团变三道菜</h3>
+            <p class="card-desc">用 7-11 的三角饭团拆解重组，15 秒内完成茶泡饭、烤饭团和饭团沙拉三种变化。步骤清晰，食材易得，适合通勤族复刻。</p>
+            <div class="card-meta"><span>更新：11月6日</span><span class="hot">热度 7.8万</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-img" src="https://picsum.photos/seed/qiezi-food03/400/300" alt="成都建设路夜市探店封面" width="400" height="300" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">美食探店</span>
+            <h3 class="card-title">成都建设路夜市：三家排队超20分钟的摊子值不值</h3>
+            <p class="card-desc">实地排队测评烤脑花、锅巴土豆和冰粉三家摊位，记录等待时长、单价和口味细节。结论明确：锅巴土豆值得等，另外两家看个人偏好。</p>
+            <div class="card-meta"><span>更新：11月5日</span><span class="hot">热度 6.5万</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-img" src="https://picsum.photos/seed/qiezi-life04/400/300" alt="羽绒服局部清洗妙招封面" width="400" height="300" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">生活妙招</span>
+            <h3 class="card-title">羽绒服局部清洗：袖口领口不整件下水的方法</h3>
+            <p class="card-desc">针对冬季羽绒服清洗痛点，演示用毛巾、中性洗涤剂和吹风机处理袖口油渍的完整流程，全程 4 分钟，无需送干洗。</p>
+            <div class="card-meta"><span>更新：11月4日</span><span class="hot">热度 5.9万</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-img" src="https://picsum.photos/seed/qiezi-pet05/400/300" alt="猫咪踩奶行为解读封面" width="400" height="300" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">萌宠记录</span>
+            <h3 class="card-title">猫咪为什么踩奶：从幼猫记忆到安全感信号</h3>
+            <p class="card-desc">结合三只家猫的日常记录，解释踩奶行为与幼猫哺乳期记忆的关联，并区分放松踩奶和焦虑踩奶的不同表现。</p>
+            <div class="card-meta"><span>更新：11月3日</span><span class="hot">热度 5.1万</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-img" src="https://picsum.photos/seed/qiezi-fit06/400/300" alt="办公室肩颈拉伸跟练封面" width="400" height="300" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">健身跟练</span>
+            <h3 class="card-title">办公室肩颈拉伸 5 分钟跟练版</h3>
+            <p class="card-desc">针对久坐人群设计的无器械肩颈放松序列，包含颈部侧屈、肩胛后缩和胸椎旋转三个动作，全程站坐均可完成。</p>
+            <div class="card-meta"><span>更新：11月2日</span><span class="hot">热度 4.7万</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. 最新更新 -->
+    <section class="section" id="updates">
+      <div class="section-head"><h2>最新更新与热播动态</h2></div>
+      <ul class="update-list">
+        <li>
+          <span class="update-time">今天 09:30</span>
+          <div class="update-info">
+            <strong>办公室迷惑行为·第12集</strong><span class="update-tag">新上线</span>
+            <span>打印机卡纸连环误会正片发布，片尾附 NG 花絮。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">今天 08:15</span>
+          <div class="update-info">
+            <strong>15秒料理改造挑战</strong><span class="update-tag">话题更新</span>
+            <span>本周主题“便利店食材改造”投稿量突破 3200 条。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">昨天 21:10</span>
+          <div class="update-info">
+            <strong>成都建设路夜市探店</strong><span class="update-tag">更新</span>
+            <span>补充了冰粉摊的配料表和价格明细，评论区置顶。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">昨天 18:40</span>
+          <div class="update-info">
+            <strong>猫咪踩奶行为解读</strong><span class="update-tag">新上线</span>
+            <span>第二期“焦虑踩奶”片段发布，展示三只猫的不同反应。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">11月6日 16:20</span>
+          <div class="update-info">
+            <strong>羽绒服局部清洗妙招</strong><span class="update-tag">更新</span>
+            <span>新增羊毛大衣袖口处理方案，时长延长至 6 分钟。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">11月5日 12:00</span>
+          <div class="update-info">
+            <strong>办公室肩颈拉伸跟练</strong><span class="update-tag">新上线</span>
+            <span>5 分钟无器械版发布，附带坐姿和站姿两个机位。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">11月4日 20:30</span>
+          <div class="update-info">
+            <strong>旅行随拍·泉州西街</strong><span class="update-tag">更新</span>
+            <span>补充了开元寺周边三条巷子的步行路线和拍照点。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">11月3日 11:00</span>
+          <div class="update-info">
+            <strong>创意挑战赛结果公布</strong><span class="update-tag">公告</span>
+            <span>“15秒料理改造”10 月赛获奖名单已发布，共 8 条作品入选。</span>
+          </div>
+        </li>
+        <li>
+          <span class="update-time">11月2日 19:00</span>
+          <div class="update-info">
+            <strong>剧情短剧·合租日记</strong><span class="update-tag">新上线</span>
+            <span>第 6 集“谁动了我的外卖”发布，片长 4 分 20 秒。</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. 分类入口 -->
+    <section class="section" id="category">
+      <div class="section-head"><h2>短视频分类入口</h2></div>
+      <div class="cat-grid">
+        <a href="/#category" class="cat-item"><span class="cat-icon">😂</span>搞笑日常</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">🎯</span>创意挑战</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">🍜</span>美食探店</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">🧹</span>生活妙招</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">🐱</span>萌宠记录</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">💪</span>健身跟练</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">✈️</span>旅行随拍</a>
+        <a href="/#category" class="cat-item"><span class="cat-icon">🎬</span>剧情短剧</a>
+      </div>
+    </section>
+
+    <!-- 5. 深度解析 -->
+    <section class="section deep-dive" id="deep-dive">
+      <div class="section-head"><h2>短视频类型深度解析</h2></div>
+      <h3>搞笑日常与剧情短剧的核心差异</h3>
+      <p>搞笑日常通常以单一场景、单一冲突为核心，在 15 秒到 1 分钟内完成铺垫和反转，信息密度集中在最后 3 秒。剧情短剧则需要在 3 到 5 分钟内建立人物关系、推进至少两个情节转折，对编剧结构的要求更高。<strong>办公室迷惑行为</strong>系列属于前者，靠单个误会撑起整条内容；<strong>合租日记</strong>属于后者，每集围绕一个生活矛盾展开完整叙事。</p>
+      <p>判断一条搞笑内容是否值得完整观看，可以看前 3 秒是否建立了明确的场景预期。如果开场就在堆砌音效和夸张表情，缺少具体情境，通常后续反转也会依赖套路。相反，像“打印机卡纸引发连环误会”这样有清晰场景锚点的条目，即使制作简单，也能保持观看兴趣。</p>
+      <h3>创意挑战类内容的参与门槛与观赏价值</h3>
+      <p>创意挑战的吸引力来自可模仿性。以<strong>15秒料理改造</strong>为例，观众看完后能立刻判断“我手头有没有这些食材”“我能不能在 15 秒内完成”。参与门槛越低，话题扩散越快。但观赏价值不完全等同于参与门槛——有些挑战制作精良但食材罕见，适合看不适合做，这类内容在收藏率上表现好，在完播率上反而偏低。</p>
+      <ul>
+        <li><strong>低门槛高观赏：</strong>便利店食材改造、旧物再利用——适合大众参与，评论区互动活跃。</li>
+        <li><strong>高门槛高观赏：</strong>专业级翻糖挑战、极限运动创意——以观赏为主，收藏量高于模仿量。</li>
+        <li><strong>低门槛低观赏：</strong>纯跟风的口型对拍——传播快但生命周期短，不建议作为长期关注方向。</li>
+      </ul>
+      <h3>美食探店的可信度判断维度</h3>
+      <p>探店内容的可信度可以从三个维度判断：<strong>价格是否透明</strong>、<strong>等待时间是否记录</strong>、<strong>负面细节是否保留</strong>。一条只讲“好吃到哭”却不报单价的探店，参考价值有限。成都建设路夜市那条内容之所以被反复收藏，是因为它明确记录了排队 22 分钟、烤脑花 18 元一份、锅巴土豆 10 元，并且直接说了“冰粉不如隔壁巷子”。这种保留负面信息的做法，反而提高了整体可信度。</p>
+      <p>另外可以留意拍摄视角——手持第一视角、有环境音的探店，通常比固定机位加旁白的更接近真实体验。如果全程只有特写镜头和背景音乐，缺少摊位环境和制作过程，需要谨慎参考。</p>
+    </section>
+
+    <!-- 6. 体验指南 -->
+    <section class="section" id="guide">
+      <div class="section-head"><h2>内容消费与选择路径</h2></div>
+      <ol class="guide-steps">
+        <li>
+          <strong>先按当下需求定类型</strong>
+          通勤路上需要快速放松，优先选搞笑日常；周末想找下饭内容，美食探店和剧情短剧更合适；有明确家务需求时再进生活妙招分类。
+        </li>
+        <li>
+          <strong>用更新时间和热度做初筛</strong>
+          单条短视频的时效性很强，优先看 3 天内更新的内容。热度值在 5 万以上的条目通常已经过一轮观众筛选，踩坑概率较低，但也要注意热度高不一定合自己口味。
+        </li>
+        <li>
+          <strong>看前 5 秒判断信息密度</strong>
+          如果开场 5 秒内没有出现具体场景、具体物品或具体问题，大概率是铺垫过长或纯情绪输出。剧情短剧除外，它需要更长的建置时间。
+        </li>
+        <li>
+          <strong>同类条目横向比较再收藏</strong>
+          遇到探店或妙招类内容，不要只看一条就下结论。同一家店至少对比两条不同创作者的内容，同一类妙招比较两种操作流程，取交集更可靠。
+        </li>
+        <li>
+          <strong>按创作者更新稳定性决定是否长期关注</strong>
+          连续 4 周保持每周 2 条以上更新的账号，内容质量通常更稳定。偶尔爆一条但长期断更的账号，适合单独收藏某条内容，不适合作为固定信息源。
+        </li>
+      </ol>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="section" id="faq">
+      <div class="section-head"><h2>常见问题</h2></div>
+      <div class="faq-list">
+        <details>
+          <summary>搞笑日常类短视频一般多久更新一次？</summary>
+          <div class="faq-answer">系列化的搞笑日常通常每周更新 1 到 2 集，单集时长 1 到 3 分钟。像“办公室迷惑行为”这种有固定场景的系列，更新节奏多为每周二和周五。单条独立搞笑内容则没有固定周期，取决于创作者当周的素材积累。</div>
+        </details>
+        <details>
+          <summary>创意挑战和剧情短剧有什么区别？</summary>
+          <div class="faq-answer">创意挑战以“可模仿的动作或规则”为核心，观众看完可以自己拍一条参与；剧情短剧以“完整的故事”为核心，观众主要消费情节。前者拼参与门槛和话题扩散，后者拼编剧结构和人物塑造，两者的评价标准不同。</div>
+        </details>
+        <details>
+          <summary>第一次看美食探店，从哪类内容入手比较好？</summary>
+          <div class="faq-answer">建议先从自己所在城市或计划前往的城市入手，优先看记录了价格、排队时间和具体菜品名称的条目。避开只有“绝了”“必吃”等形容词、没有具体信息的探店，这类内容参考价值有限。</div>
+        </details>
+        <details>
+          <summary>生活妙招类短视频的判断标准是什么？</summary>
+          <div class="faq-answer">主要看三点：步骤是否完整（有没有跳过关键环节）、材料是否常见（是否需要专门购买工具）、结果是否展示前后对比。如果只展示成品不展示过程，或者用了很少见的专业耗材，实际操作价值会打折扣。</div>
+        </details>
+        <details>
+          <summary>萌宠记录里的行为解读内容可信吗？</summary>
+          <div class="faq-answer">可以参考但不必当成专业结论。多数行为解读类内容基于日常观察，能提供一些实用视角，比如区分放松踩奶和焦虑踩奶的体态差异。如果涉及健康问题，仍应以兽医诊断为准，短视频内容只适合做初步了解。</div>
+        </details>
+        <details>
+          <summary>健身跟练短视频能代替线下课程吗？</summary>
+          <div class="faq-answer">对于肩颈拉伸、基础核心激活这类低风险内容，跟练视频可以作为日常放松的补充。涉及负重、爆发力或康复训练的内容，视频无法纠正动作细节，建议先有线下指导基础再自行跟练。</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 8. 用户评论 -->
+    <section class="section" id="comments">
+      <div class="section-head"><h2>用户评论</h2></div>
+      <div class="comment-list">
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">林</div><span class="comment-name">林间小鹿</span></div>
+          <p class="comment-text">办公室迷惑行为第 12 集的打印机梗太真实了，我们公司上周才发生过一模一样的事。</p>
+          <span class="comment-item-tag">办公室迷惑行为</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">阿</div><span class="comment-name">阿七不吃香菜</span></div>
+          <p class="comment-text">跟着 15 秒料理改造做了茶泡饭，饭团拆开之后确实比直接吃有意思，就是茶包选错了有点苦。</p>
+          <span class="comment-item-tag">15秒料理改造</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">猫</div><span class="comment-name">猫猫头头</span></div>
+          <p class="comment-text">猫咪踩奶那期讲得挺细的，我家猫确实是只在毯子上踩，换了凉席就不踩了。</p>
+          <span class="comment-item-tag">猫咪踩奶行为解读</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">成</div><span class="comment-name">成都土著小王</span></div>
+          <p class="comment-text">建设路那三家我都吃过，锅巴土豆确实值得等，冰粉那家我也觉得一般，博主说得比较客观。</p>
+          <span class="comment-item-tag">成都建设路夜市</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">冬</div><span class="comment-name">冬天的第一杯</span></div>
+          <p class="comment-text">羽绒服局部清洗那个方法试了，袖口油渍确实能去掉，但吹风机吹干要很久，建议用毛巾多吸几遍水。</p>
+          <span class="comment-item-tag">羽绒服局部清洗妙招</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">一</div><span class="comment-name">一只小透明</span></div>
+          <p class="comment-text">剧情短剧合租日记第 6 集结尾有点仓促，前面铺垫了三分钟的外卖事件，结果两句话就解决了。</p>
+          <span class="comment-item-tag">合租日记</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">肩</div><span class="comment-name">肩颈困难户</span></div>
+          <p class="comment-text">办公室拉伸那个跟练版不错，坐着就能做，开会间隙偷偷做了一遍，肩胛骨那里确实松了一点。</p>
+          <span class="comment-item-tag">办公室肩颈拉伸</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">泉</div><span class="comment-name">泉州路过的</span></div>
+          <p class="comment-text">泉州西街那个步行路线还行，开元寺旁边那条巷子确实适合拍照，下午光线更好。</p>
+          <span class="comment-item-tag">旅行随拍·泉州西街</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">创</div><span class="comment-name">创意挑战爱好者</span></div>
+          <p class="comment-text">这周便利店食材改造的投稿质量参差不齐，有几个直接拆包装摆盘就发了，没什么改造含量。</p>
+          <span class="comment-item-tag">15秒料理改造挑战</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">萌</div><span class="comment-name">萌宠观察员</span></div>
+          <p class="comment-text">踩奶那期评论区好多人说自己家猫也这样，看来这个行为确实普遍，但解释得这么清楚的视频不多。</p>
+          <span class="comment-item-tag">猫咪踩奶行为解读</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">吃</div><span class="comment-name">吃完就困</span></div>
+          <p class="comment-text">美食探店能不能多出点非川渝地区的，最近推的全是成都和重庆，想看看其他地方的小吃。</p>
+          <span class="comment-item-tag">美食探店</span>
+        </div>
+        <div class="comment-card">
+          <div class="comment-user"><div class="comment-avatar">夜</div><span class="comment-name">夜班刚下班</span></div>
+          <p class="comment-text">更新列表里那个泉州西街的路线我收藏了，周末正好要去，希望后续能补上公交和停车信息。</p>
+          <span class="comment-item-tag">旅行随拍·泉州西街</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. 相关资讯 -->
+    <section class="section" id="news">
+      <div class="section-head"><h2>相关资讯</h2></div>
+      <div class="news-list">
+        <article class="news-item">
+          <img class="news-thumb" src="https://picsum.photos/seed/qiezi-news01/600/400" alt="办公室短剧系列更新公告配图" width="600" height="400" loading="lazy">
+          <div class="news-body">
+            <h4>“办公室迷惑行为”系列确认续订第三季，12 月上线首集</h4>
+            <span class="news-date">2026-11-07</span>
+            <p>制作方在 11 月 7 日的直播中确认，该系列第三季将扩展至 15 集，新增会议室和茶水间两个场景。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <img class="news-thumb" src="https://picsum.photos/seed/qiezi-news02/600/400" alt="15秒料理改造挑战赛结果配图" width="600" height="400" loading="lazy">
+          <div class="news-body">
+            <h4>15秒料理改造 10 月赛结果公布，8 条作品入选年度复赛</h4>
+            <span class="news-date">2026-11-03</span>
+            <p>赛事组委会 11 月 3 日公布名单，入选作品以“低成本改造”和“剩菜再利用”两个方向为主，评审提到可复现性是核心标准。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <img class="news-thumb" src="https://picsum.photos/seed/qiezi-news03/600/400" alt="夜市探店内容趋势配图" width="600" height="400" loading="lazy">
+          <div class="news-body">
+            <h4>街头小吃探店内容完播率上升，二三线城市夜市成新热点</h4>
+            <span class="news-date">2026-11-01</span>
+            <p>近一个月数据显示，带有具体价格和排队时长的夜市探访内容，平均完播率比连锁品牌测评高 18 个百分点。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <img class="news-thumb" src="https://picsum.photos/seed/qiezi-news04/600/400" alt="生活妙招类内容收藏趋势配图" width="600" height="400" loading="lazy">
+          <div class="news-body">
+            <h4>冬季生活妙招类短视频收藏量上涨，羽绒服清洗话题居首</h4>
+            <span class="news-date">2026-10-30</span>
+            <p>随着气温下降，羽绒服清洗、毛衣起球处理和大衣除尘三类内容的收藏量周环比增长明显，其中局部清洗方法最受关注。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <img class="news-thumb" src="https://picsum.photos/seed/qiezi-news05/600/400" alt="萌宠行为解读社区讨论配图" width="600" height="400" loading="lazy">
+          <div class="news-body">
+            <h4>猫咪行为解读内容引发社区讨论，专业兽医参与科普</h4>
+            <span class="news-date">2026-10-28</span>
+            <p>多位执业兽医在评论区补充了踩奶行为与压力信号的区分要点，相关内容单日互动量突破 1.2 万条。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <img class="news-thumb" src="https://picsum.photos/seed/qiezi-news06/600/400" alt="合租日记短剧更新配图" width="600" height="400" loading="lazy">
+            <h4>剧情短剧“合租日记”第 6 集上线，外卖丢失事件成讨论焦点</h4>
+            <span class="news-date">2026-11-02</span>
+            <p>第 6 集围绕合租房外卖被拿错展开，评论区围绕“该不该在群里直接问”形成了不同观点的讨论。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 10. 相关推荐 -->
+    <section class="section" id="related">
+      <div class="section-head"><h2>相关推荐方向</h2></div>
+      <div class="tag-cloud">
+        <a href="/#featured">办公室搞笑短剧合集</a>
+        <a href="/#featured">便利店食材改造系列</a>
+        <a href="/#featured">川渝夜市小吃探访</a>
+        <a href="/#featured">冬季衣物护理妙招</a>
+        <a href="/#featured">猫咪行为观察记录</a>
+        <a href="/#featured">零器械肩颈放松</a>
+        <a href="/#featured">老城区步行拍照路线</a>
+        <a href="/#featured">合租生活剧情短剧</a>
+      </div>
+    </section>
+
+    <!-- 11. 热门榜单 -->
+    <section class="section" id="ranking">
+      <div class="section-head"><h2>本周热门短视频榜单</h2></div>
+      <ol class="rank-list">
+        <li><span class="rank-num">1</span><span class="rank-name">办公室迷惑行为·第12集：打印机卡纸引发的连环误会</span><span class="rank-heat">9.2万</span></li>
+        <li><span class="rank-num">2</span><span class="rank-name">15秒料理改造：便利店饭团变三道菜</span><span class="rank-heat">7.8万</span></li>
+        <li><span class="rank-num">3</span><span class="rank-name">成都建设路夜市：三家排队超20分钟的摊子值不值</span><span class="rank-heat">6.5万</span></li>
+        <li><span class="rank-num">4</span><span class="rank-name">羽绒服局部清洗：袖口领口不整件下水的方法</span><span class="rank-heat">5.9万</span></li>
+        <li><span class="rank-num">5</span><span class="rank-name">猫咪为什么踩奶：从幼猫记忆到安全感信号</span><span class="rank-heat">5.1万</span></li>
+        <li><span class="rank-num">6</span><span class="rank-name">办公室肩颈拉伸 5 分钟跟练版</span><span class="rank-heat">4.7万</span></li>
+        <li><span class="rank-num">7</span><span class="rank-name">合租日记·第6集：谁动了我的外卖</span><span class="rank-heat">4.3万</span></li>
+        <li><span class="rank-num">8</span><span class="rank-name">泉州西街步行路线：开元寺周边三条巷子</span><span class="rank-heat">3.8万</span></li>
+      </ol>
+    </section>
+
+  </main>
+
+  <!-- 右侧辅助栏 -->
+  <aside class="sidebar" aria-label="辅助信息">
+    <div class="side-card">
+      <h3>今日更新速览</h3>
+      <ul class="side-list">
+        <li><a href="/#updates">办公室迷惑行为·第12集 <span>09:30</span></a></li>
+        <li><a href="/#updates">15秒料理改造话题更新 <span>08:15</span></a></li>
+        <li><a href="/#updates">成都夜市探店价格补充 <span>昨天</span></a></li>
+        <li><a href="/#updates">猫咪踩奶第二期上线 <span>昨天</span></a></li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h3>分类热度</h3>
+      <ul class="side-list">
+        <li><a href="/#category">搞笑日常 <span>42 条</span></a></li>
+        <li><a href="/#category">创意挑战 <span>36 条</span></a></li>
+        <li><a href="/#category">美食探店 <span>28 条</span></a></li>
+        <li><a href="/#category">生活妙招 <span>24 条</span></a></li>
+        <li><a href="/#category">萌宠记录 <span>19 条</span></a></li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h3>延伸方向</h3>
+      <ul class="side-list">
+        <li><a href="/#related">办公室短剧合集</a></li>
+        <li><a href="/#related">便利店改造系列</a></li>
+        <li><a href="/#related">冬季衣物护理</a></li>
+        <li><a href="/#related">猫咪行为观察</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-text">茄子抖音短视频</span>
+      <p>聚合搞笑日常、创意挑战、美食探店与生活妙招等短视频条目，提供更新追踪、分类索引和类型解析，帮助观众按需找到合适的内容。</p>
+    </div>
+    <div class="footer-col">
+      <h4>内容分类</h4>
+      <ul>
+        <li><a href="/#category">搞笑日常</a></li>
+        <li><a href="/#category">创意挑战</a></li>
+        <li><a href="/#category">美食探店</a></li>
+        <li><a href="/#category">生活妙招</a></li>
+        <li><a href="/#category">萌宠记录</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>页面导航</h4>
+      <ul>
+        <li><a href="/#overview">领域概览</a></li>
+        <li><a href="/#featured">精选推荐</a></li>
+        <li><a href="/#deep-dive">深度解析</a></li>
+        <li><a href="/#faq">常见问答</a></li>
+        <li><a href="/#ranking">热门榜单</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 茄子抖音短视频 · 内容聚合示例页面</span>
+    <span>部分内容为示例数据，仅用于展示页面结构</span>
+  </div>
+</footer>
+
+<script>
+// 本地可见内容筛选（搜索）
+function filterPage(e){
+  e.preventDefault();
+  var q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){
+    // 清除高亮
+    document.querySelectorAll('mark.search-hit').forEach(function(m){
+      var parent = m.parentNode;
+      parent.replaceChild(document.createTextNode(m.textContent), m);
+      parent.normalize();
+    });
+    return false;
+  }
+  var targets = document.querySelectorAll('.card-title, .update-info strong, .news-body h4, .rank-name, .faq-list summary');
+  var firstHit = null;
+  targets.forEach(function(el){
+    var text = el.textContent.toLowerCase();
+    if(text.indexOf(q) !== -1){
+      if(!firstHit) firstHit = el;
+    }
+  });
+  if(firstHit){
+    firstHit.scrollIntoView({behavior:'smooth', block:'center'});
+    firstHit.style.transition = 'background .3s';
+    firstHit.style.background = '#fdeee8';
+    setTimeout(function(){ firstHit.style.background = ''; }, 1600);
+  } else {
+    alert('未找到包含“' + q + '”的条目，请尝试其他关键词。');
+  }
+  return false;
+}
+// 监听输入框回车
+document.getElementById('searchInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ filterPage(e); }
+});
+</script>
+
+</body>
+            </html>
