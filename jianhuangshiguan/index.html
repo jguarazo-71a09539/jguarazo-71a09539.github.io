@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鉴黄师官方入口 - 内容审核入门与培训资源</title>
+  <meta name="description" content="鉴黄师官方入口提供内容审核入门指南、培训课程、审核标准、工具与案例解析，适合想从事网络内容审核或提升审核技能的用户查阅。">
+  <meta name="keywords" content="内容审核培训,审核标准,审核工具,网络内容安全,审核案例">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231e293b'/%3E%3Cpath d='M10 12h12v2H10zm0 5h12v2H10zm0 5h8v2h-8z' fill='%2338bdf8'/%3E%3Ccircle cx='22' cy='10' r='3' fill='%23f59e0b'/%3E%3C/svg%3E">
+  <style>
+    /* ---------- 设计系统 ---------- */
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --line-strong: #cbd5e1;
+      --brand: #1e3a5f;
+      --brand-soft: #e0f2fe;
+      --accent: #f59e0b;
+      --accent-soft: #fef3c7;
+      --danger: #dc2626;
+      --success: #0f766e;
+      --radius-sm: 6px;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
+      --shadow: 0 4px 12px rgba(15,23,42,.06);
+      --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      --maxw: 1320px;
+      --header-h: 64px;
+      --notice-h: 38px;
+      --anchor-offset: calc(var(--header-h) + var(--notice-h) + 12px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--anchor-offset); }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; cursor: pointer; }
+    ul { list-style: none; }
+    /* ---------- 吸顶公告条 ---------- */
+    .notice-bar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: var(--brand);
+      color: #e0f2fe;
+      font-size: 13px;
+      height: var(--notice-h);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .notice-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .notice-badge {
+      background: var(--accent);
+      color: #1e293b;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+    /* ---------- 页头 ---------- */
+    .site-header {
+      position: sticky;
+      top: var(--notice-h);
+      z-index: 50;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      height: var(--header-h);
+    }
+    .header-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .logo svg { width: 34px; height: 34px; }
+    .logo-text {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+    .main-nav {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .main-nav::-webkit-scrollbar { display: none; }
+    .main-nav a {
+      font-size: 14px;
+      color: var(--ink-soft);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .main-nav a:hover { background: var(--brand-soft); color: var(--brand); text-decoration: none; }
+    .header-cta {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #1e293b;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: none;
+      transition: background .2s;
+    }
+    .header-cta:hover { background: #d97706; color: #fff; text-decoration: none; }
+    /* ---------- 首屏 ---------- */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 55%, #1e40af 100%);
+      color: #f1f5f9;
+      padding: 56px 20px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(56,189,248,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #bae6fd;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 620px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #1e293b;
+      font-weight: 700;
+      padding: 11px 26px;
+      border-radius: var(--radius);
+      border: none;
+      font-size: 15px;
+      transition: transform .15s, background .2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #d97706; color: #fff; text-decoration: none; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 11px 26px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 500;
+      transition: background .2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); text-decoration: none; }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual svg { width: 100%; max-width: 360px; height: auto; filter: drop-shadow(0 12px 32px rgba(0,0,0,.35)); }
+    /* ---------- 主内容容器 ---------- */
+    .main-wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+    /* 三栏门户布局 */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 176px minmax(0, 1fr) 248px;
+      gap: 28px;
+      align-items: start;
+    }
+    .channel-index {
+      position: sticky;
+      top: var(--anchor-offset);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .channel-index h2 {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      padding-left: 8px;
+    }
+    .channel-index ul { display: flex; flex-direction: column; gap: 2px; }
+    .channel-index a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+    .channel-index a:hover { background: var(--brand-soft); color: var(--brand); text-decoration: none; }
+    .channel-index a .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); flex-shrink: 0; }
+    .channel-index a:hover .dot { background: var(--brand); }
+    .main-col { min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+    .side-col { display: flex; flex-direction: column; gap: 24px; position: sticky; top: var(--anchor-offset); }
+    /* ---------- 通用板块 ---------- */
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px 26px;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .section-head h2 {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: .5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-head h2::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 20px;
+      border-radius: 3px;
+      background: var(--accent);
+    }
+    .section-sub { font-size: 13px; color: var(--muted); }
+    /* ---------- 概览 ---------- */
+    .overview-text { color: var(--ink-soft); font-size: 15px; line-height: 1.8; }
+    .overview-text p { margin-bottom: 12px; }
+    .overview-text p:last-child { margin-bottom: 0; }
+    /* ---------- 精选卡片网格 ---------- */
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .pick-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .2s, transform .15s;
+    }
+    .pick-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .pick-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .pick-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .tag.accent { background: var(--accent-soft); color: #92400e; }
+    .tag.gray { background: #f1f5f9; color: var(--muted); }
+    .pick-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; }
+    .pick-card h3 a { color: var(--ink); }
+    .pick-card h3 a:hover { color: var(--brand); }
+    .pick-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .pick-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; margin-top: 4px; }
+    .pick-meta .hot { color: var(--danger); font-weight: 600; }
+    /* ---------- 最新更新列表 ---------- */
+    .update-list { display: flex; flex-direction: column; }
+    .update-item {
+      display: flex;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-time {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 78px;
+      padding-top: 2px;
+    }
+    .update-content { flex: 1; min-width: 0; }
+    .update-content strong { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .update-content p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    /* ---------- 分类入口 ---------- */
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .cat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      transition: border-color .2s, background .2s;
+      min-width: 0;
+    }
+    .cat-item:hover { border-color: var(--brand); background: var(--brand-soft); text-decoration: none; }
+    .cat-item .cat-name { font-size: 15px; font-weight: 700; color: var(--brand); }
+    .cat-item .cat-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    /* ---------- 深度解析 ---------- */
+    .deep h3 { font-size: 17px; font-weight: 700; margin: 22px 0 10px; color: var(--ink); }
+    .deep h3:first-of-type { margin-top: 0; }
+    .deep p { color: var(--ink-soft); margin-bottom: 12px; font-size: 15px; line-height: 1.8; }
+    .deep ul { margin: 8px 0 14px 0; padding-left: 0; }
+    .deep ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+    .deep ul li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    /* ---------- 对照面板 / 步骤 ---------- */
+    .compare-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .compare-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: var(--bg);
+    }
+    .compare-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--brand); }
+    .compare-box p, .compare-box li { font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
+    .compare-box ul { padding-left: 0; }
+    .compare-box ul li { padding-left: 16px; position: relative; margin-bottom: 4px; }
+    .compare-box ul li::before { content: "·"; position: absolute; left: 4px; font-weight: 700; color: var(--accent); }
+    .step-list { counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
+    .step-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      counter-increment: step;
+    }
+    .step-item::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .step-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    /* ---------- FAQ ---------- */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-list details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .faq-list summary {
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; font-size: 20px; color: var(--muted); font-weight: 400; line-height: 1; flex-shrink: 0; }
+    .faq-list details[open] summary::after { content: "−"; }
+    .faq-list details[open] summary { background: var(--brand-soft); }
+    .faq-body { padding: 0 18px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
+    /* ---------- 评论 ---------- */
+    .comment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .comment-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .comment-head { display: flex; align-items: center; gap: 8px; }
+    .avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a5f, #38bdf8);
+      color: #fff; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .comment-user { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .comment-date { font-size: 11px; color: var(--muted); margin-left: auto; }
+    .comment-text { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; }
+    /* ---------- 相关资讯 ---------- */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-item img { width: 100px; height: 72px; object-fit: cover; border-radius: var(--radius-sm); }
+    .news-item h4 { font-size: 14.5px; font-weight: 700; margin-bottom: 3px; }
+    .news-item h4 a { color: var(--ink); }
+    .news-item h4 a:hover { color: var(--brand); }
+    .news-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .news-date { font-size: 11px; color: var(--muted); margin-top: 4px; display: block; }
+    /* ---------- 相关推荐 ---------- */
+    .rec-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .rec-tags a {
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-weight: 500;
+      transition: border-color .2s, background .2s;
+    }
+    .rec-tags a:hover { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); text-decoration: none; }
+    /* ---------- 侧栏排行榜 ---------- */
+    .side-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-panel h2 { font-size: 15px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .side-panel h2::before { content: ""; width: 4px; height: 15px; border-radius: 2px; background: var(--danger); }
+    .rank-list { display: flex; flex-direction: column; gap: 10px; }
+    .rank-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; }
+    .rank-num {
+      flex-shrink: 0; width: 20px; height: 20px; border-radius: 4px;
+      background: var(--bg); color: var(--muted); font-weight: 700; font-size: 11px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rank-num.top1 { background: #dc2626; color: #fff; }
+    .rank-num.top2 { background: #ea580c; color: #fff; }
+    .rank-num.top3 { background: #f59e0b; color: #fff; }
+    .rank-item a { color: var(--ink-soft); font-weight: 500; line-height: 1.4; }
+    .rank-item a:hover { color: var(--brand); }
+    .rank-item .rank-meta { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+    /* ---------- 时间线（侧栏） ---------- */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 14px; }
+    .timeline::before { content: ""; position: absolute; left: 4px; top: 4px; bottom: 4px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 0 0 14px 14px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: ""; position: absolute; left: -14px; top: 5px;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 2px solid var(--panel);
+    }
+    .tl-date { font-size: 11px; color: var(--muted); font-weight: 600; }
+    .tl-text { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; }
+    .tl-text a { color: var(--ink-soft); }
+    .tl-text a:hover { color: var(--brand); }
+    /* ---------- 页尾 ---------- */
+    .site-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 44px 20px 28px;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+    .footer-inner { max-width: var(--maxw); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 28px; border-bottom: 1px solid #1e293b; }
+    .footer-brand .logo-text { color: #fff; font-size: 18px; }
+    .footer-brand p { margin-top: 10px; color: #64748b; line-height: 1.7; font-size: 12.5px; max-width: 280px; }
+    .footer-col h4 { color: #cbd5e1; font-size: 13px; margin-bottom: 10px; font-weight: 700; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 6px; }
+    .footer-col a { color: #64748b; font-size: 12.5px; }
+    .footer-col a:hover { color: #e2e8f0; text-decoration: none; }
+    .footer-bottom { padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: #475569; font-size: 12px; }
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 1100px) {
+      .portal-grid { grid-template-columns: 160px minmax(0, 1fr); }
+      .side-col { grid-column: 1 / -1; position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    }
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-visual { display: none; }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-grid { grid-template-columns: repeat(3, 1fr); }
+      .comment-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .portal-grid { grid-template-columns: 1fr; }
+      .channel-index { position: static; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 12px; }
+      .channel-index h2 { width: 100%; margin-bottom: 6px; }
+      .channel-index ul { flex-direction: row; flex-wrap: wrap; }
+      .channel-index a { padding: 6px 12px; }
+      .side-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 740px) {
+      .header-inner { gap: 12px; }
+      .main-nav { display: none; }
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .compare-panel { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 1fr; }
+      .news-item img { width: 100%; height: 140px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .section { padding: 20px 16px; }
+      .hero { padding: 40px 16px 48px; }
+      .hero-desc { font-size: 14.5px; }
+      .update-item { flex-direction: column; gap: 4px; }
+      .update-time { min-width: 0; }
+      .main-wrap { padding: 24px 14px 40px; }
+    }
+    @media (max-width: 420px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .header-cta { display: none; }
+      .logo-text { font-size: 16px; }
+    }
+    /* 可见焦点 */
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+    /* 锚点偏移 */
+    [id] { scroll-margin-top: var(--anchor-offset); }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="notice-bar" role="status">
+    <div class="notice-inner">
+      <span class="notice-badge">新增</span>
+      <span>11 月 8 日更新：内容审核员培训课程新增 4 节「AI 生成内容识别」模块，题库扩至 320 题</span>
+    </div>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/#top" class="logo" aria-label="鉴黄师官方入口 首页">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="#1e3a5f"/>
+          <path d="M9 11h14v2H9zm0 5h14v2H9zm0 5h9v2H9z" fill="#38bdf8"/>
+          <circle cx="23" cy="9" r="3.2" fill="#f59e0b"/>
+        </svg>
+        <span class="logo-text">鉴黄师官方入口</span>
+      </a>
+      <nav class="main-nav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#picks">精选推荐</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deepdive">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+      </nav>
+      <a href="/#picks" class="header-cta">开始学习</a>
+    </div>
+  </header>
+
+  <!-- 主题首屏 -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-eyebrow">内容安全 · 审核技能 · 职业入门</span>
+        <h1>鉴黄师官方入口</h1>
+        <p class="hero-desc">汇集网络内容审核领域的入门知识、培训课程、审核标准、AI 辅助工具与真实案例解析，适合想从事内容审核工作或提升审核判断能力的用户系统查阅。</p>
+        <div class="hero-actions">
+          <a href="/#picks" class="btn-primary">查看推荐课程</a>
+          <a href="/#guide" class="btn-ghost">了解入门路径</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 340 300" role="img" aria-label="内容审核盾牌与审查界面插画">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#1e40af" stop-opacity=".6"/>
+            </linearGradient>
+          </defs>
+          <rect x="30" y="40" width="280" height="190" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+          <rect x="46" y="56" width="248" height="24" rx="6" fill="#1e293b"/>
+          <circle cx="60" cy="68" r="4" fill="#ef4444"/>
+          <circle cx="74" cy="68" r="4" fill="#f59e0b"/>
+          <circle cx="88" cy="68" r="4" fill="#22c55e"/>
+          <rect x="60" y="98" width="100" height="10" rx="4" fill="#334155"/>
+          <rect x="60" y="118" width="160" height="8" rx="4" fill="#1e293b"/>
+          <rect x="60" y="136" width="130" height="8" rx="4" fill="#1e293b"/>
+          <rect x="60" y="162" width="70" height="24" rx="6" fill="#f59e0b" opacity=".9"/>
+          <rect x="142" y="162" width="60" height="24" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+          <path d="M230 150 l36 0 l0 36 l-36 0 z" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M290 130 l26 14 l-8 26 l-24 2 l-10 -22 z" fill="url(#g1)" opacity=".5"/>
+          <circle cx="250" cy="240" r="34" fill="none" stroke="#f59e0b" stroke-width="2.5" opacity=".6"/>
+          <path d="M236 240 l10 10 l20 -22" fill="none" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主内容区：三栏门户 -->
+  <div class="main-wrap">
+    <div class="portal-grid">
+
+      <!-- 左频道索引 -->
+      <aside class="channel-index" aria-label="频道索引">
+        <h2>频道索引</h2>
+        <ul>
+          <li><a href="/#overview"><span class="dot"></span>领域概览</a></li>
+          <li><a href="/#picks"><span class="dot"></span>精选推荐</a></li>
+          <li><a href="/#updates"><span class="dot"></span>最新动态</a></li>
+          <li><a href="/#categories"><span class="dot"></span>分类入口</a></li>
+          <li><a href="/#deepdive"><span class="dot"></span>深度解析</a></li>
+          <li><a href="/#guide"><span class="dot"></span>体验指南</a></li>
+          <li><a href="/#faq"><span class="dot"></span>常见问答</a></li>
+          <li><a href="/#comments"><span class="dot"></span>用户评论</a></li>
+          <li><a href="/#news"><span class="dot"></span>相关资讯</a></li>
+          <li><a href="/#related"><span class="dot"></span>相关推荐</a></li>
+          <li><a href="/#ranking"><span class="dot"></span>热门榜单</a></li>
+        </ul>
+      </aside>
+
+      <!-- 中主内容 -->
+      <main class="main-col" id="main-content">
+
+        <!-- 1. 主题领域概览 -->
+        <section class="section" id="overview">
+          <div class="section-head">
+            <h2>内容审核领域概览</h2>
+            <span class="section-sub">2026 年 11 月更新</span>
+          </div>
+          <div class="overview-text">
+            <p>鉴黄师是网络内容安全体系中的一线审查岗位，核心工作是对用户上传的图片、视频、文本和直播流进行违规内容识别与分级处置。随着 AI 生成内容大量涌入平台，审核员不仅要判断传统色情、暴力、赌博等违规类型，还需要识别 AI 换脸、深度伪造、隐晦软色情等新型风险。当前行业对审核员的技能要求正从“人工识别”转向“人机协同”——理解算法判定的置信度、处理机器误判的申诉、标注模型训练样本，都成为岗位的日常内容。</p>
+            <p>内容审核领域目前主要包含几个方向：图片与视频审核是需求最大的方向，侧重对画面元素的快速判断；文本审核关注涉黄暗语、引流话术和变体词识别；直播审核强调实时性与应急响应；AI 生成内容审核则是近两年增长最快的新方向，要求审核员熟悉生成式模型的典型缺陷和伪造痕迹。培训课程、审核标准文档、案例判例库和辅助工具评测，构成了从业者最常查阅的四类内容。对于刚接触这一领域的人来说，从审核标准体系和典型样本入手，比直接背诵违规词表更有效。</p>
+          </div>
+        </section>
+
+        <!-- 2. 精选内容推荐 -->
+        <section class="section" id="picks">
+          <div class="section-head">
+            <h2>精选课程与工具推荐</h2>
+            <span class="section-sub">6 个入门与进阶资源</span>
+          </div>
+          <div class="card-grid">
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/shenhe-rumen01/400/300" alt="内容审核入门标准课程封面" width="400" height="300" loading="lazy">
+              <div class="pick-body">
+                <div class="tag-row"><span class="tag">入门课程</span><span class="tag accent">标准体系</span></div>
+                <h3><a href="/#picks">内容审核员入门标准课程</a></h3>
+                <p class="pick-desc">覆盖色情分级、暴力识别、引流话术三大基础模块，含 120 道情景判断题，适合零基础学员建立判断框架。</p>
+                <div class="pick-meta"><span class="hot">热度 9.6</span><span>32 课时</span></div>
+              </div>
+            </article>
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/ai-jiaoyan02/400/300" alt="AI 生成内容识别专题课封面" width="400" height="300" loading="lazy">
+              <div class="pick-body">
+                <div class="tag-row"><span class="tag">进阶专题</span><span class="tag accent">AI 识别</span></div>
+                <h3><a href="/#picks">AI 生成内容识别专题课</a></h3>
+                <p class="pick-desc">讲解深度伪造画面的典型瑕疵、生成文本的语义特征，以及如何用反向检索和元数据核对辅助判断。</p>
+                <div class="pick-meta"><span class="hot">热度 9.2</span><span>18 课时</span></div>
+              </div>
+            </article>
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/zhubo-shenhe03/400/300" alt="直播审核应急手册封面" width="400" height="300" loading="lazy">
+              <div class="pick-body">
+                <div class="tag-row"><span class="tag">实战手册</span><span class="tag gray">直播</span></div>
+                <h3><a href="/#picks">直播审核应急处理手册</a></h3>
+                <p class="pick-desc">梳理直播场景下 15 类高发违规的识别要点与断流处置流程，附 30 秒快速判断口诀。</p>
+                <div class="pick-meta"><span class="hot">热度 8.9</span><span>电子版</span></div>
+              </div>
+            </article>
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/ciyu-bianxing04/400/300" alt="涉黄暗语变体词库封面" width="400" height="300" loading="lazy">
+              <div class="pick-body">
+                <div class="tag-row"><span class="tag">词库工具</span><span class="tag accent">文本审核</span></div>
+                <h3><a href="/#picks">涉黄暗语与变体词识别库</a></h3>
+                <p class="pick-desc">收录近年常见的谐音替代、拆字、表情符号暗语等变体形式，按场景分类并标注演变规律。</p>
+                <div class="pick-meta"><span class="hot">热度 8.7</span><span>持续更新</span></div>
+              </div>
+            </article>
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/pingce-gongju05/400/300" alt="审核辅助工具横向评测封面" width="400" height="300" loading="lazy">
+              <div class="pick-body">
+                <div class="tag-row"><span class="tag">工具评测</span><span class="tag gray">横向对比</span></div>
+                <h3><a href="/#picks">审核辅助工具横向评测</a></h3>
+                <p class="pick-desc">对比 6 款画面检测、文本过滤与证据留存工具在准确率、响应速度和误报率上的实际表现。</p>
+                <div class="pick-meta"><span class="hot">热度 8.5</span><span>2026-11-05</span></div>
+              </div>
+            </article>
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/anli-jixi06/400/300" alt="典型违规案例判例集封面" width="400" height="300" loading="lazy">
+              <div class="pick-body">
+                <div class="tag-row"><span class="tag">案例判例</span><span class="tag accent">争议边界</span></div>
+                <h3><a href="/#picks">典型违规案例判例集</a></h3>
+                <p class="pick-desc">精选 80 个争议案例，涵盖擦边写真、医疗科普误判、艺术创作边界等容易产生分歧的场景。</p>
+                <div class="pick-meta"><span class="hot">热度 8.3</span><span>80 案例</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 3. 最新更新 / 动态 -->
+        <section class="section" id="updates">
+          <div class="section-head">
+            <h2>最新更新与行业动态</h2>
+            <span class="section-sub">截至 2026-11-08</span>
+          </div>
+          <div class="update-list">
+            <div class="update-item">
+              <span class="update-time">今天 09:30</span>
+              <div class="update-content"><strong>「AI 生成内容识别」专题课第 7 节上线</strong><p>新增深度伪造人脸的光影一致性检查方法，配 12 组对比样本。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">昨天 21:10</span>
+              <div class="update-content"><strong>涉黄暗语词库更新至 2026 年 11 月版</strong><p>新增 43 条谐音变体与直播弹幕暗语，移除 11 条已失效词条。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11 月 7 日</span>
+              <div class="update-content"><strong>直播审核应急手册发布第 3 版</strong><p>补充连麦场景下的违规连带责任判定流程，附处置话术模板。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11 月 6 日</span>
+              <div class="update-content"><strong>内容审核员入门标准课程题库扩容至 320 题</strong><p>新增医疗健康类内容误判辨析题 40 道，调整难度分布。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11 月 5 日</span>
+              <div class="update-content"><strong>审核辅助工具横向评测发布 11 月版</strong><p>纳入 2 款新上线的画面检测工具，更新准确率与误报率数据。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11 月 4 日</span>
+              <div class="update-content"><strong>典型违规案例判例集新增「艺术创作边界」专题</strong><p>收录 12 个涉及人体艺术与低俗内容的区分案例，附审核意见。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11 月 3 日</span>
+              <div class="update-content"><strong>文本审核专题直播回放上线</strong><p>70 分钟讲解暗语识别思路，含实时弹幕互动答疑片段。</p></div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11 月 1 日</span>
+              <div class="update-content"><strong>平台内容安全新规解读文档发布</strong><p>梳理 10 月下旬生效的两项审核细则，标注对一线判断的影响点。</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 分类入口 -->
+        <section class="section" id="categories">
+          <div class="section-head">
+            <h2>审核方向分类入口</h2>
+            <span class="section-sub">按内容类型定位</span>
+          </div>
+          <div class="cat-grid">
+            <a href="/#updates" class="cat-item"><span class="cat-name">图片审核</span><span class="cat-desc">画面元素识别与分级</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">视频审核</span><span class="cat-desc">时序内容与场景判断</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">直播审核</span><span class="cat-desc">实时监控与应急处置</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">文本审核</span><span class="cat-desc">暗语变体与引流话术</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">AI 生成内容审核</span><span class="cat-desc">深度伪造与模型痕迹</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">音频审核</span><span class="cat-desc">语音内容与背景音识别</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">审核标准</span><span class="cat-desc">分级规则与判例参考</span></a>
+            <a href="/#updates" class="cat-item"><span class="cat-name">审核工具</span><span class="cat-desc">检测软件与辅助系统</span></a>
+          </div>
+        </section>
+
+        <!-- 5. 深度解析正文 -->
+        <section class="section deep" id="deepdive">
+          <div class="section-head">
+            <h2>深度解析：内容审核的判断维度与类型差异</h2>
+          </div>
+          <h3>图片审核与视频审核的判断差异</h3>
+          <p>图片审核的核心是静态画面中的元素识别——暴露部位、性暗示姿势、暴力血腥元素、违禁物品展示。审核员需要在一眼之内完成分级判断，通常平台会把画面拆分为“明确违规”“疑似违规”“需人工复核”三档。视频审核则多了一层时间维度：单独某一帧可能不违规，但连续帧构成的动态过程可能形成违规。例如一段舞蹈视频，截帧画面可能都在正常范围内，但整体动作编排带有明显性暗示，就需要结合上下文判断。</p>
+          <p>实际工作中，视频审核往往先由算法抽帧和关键帧检测完成初筛，人工审核员处理的是被标记的片段。这就要求审核员理解算法的抽帧逻辑——如果算法每隔 2 秒抽一帧，那么快速闪现的违规画面可能被漏掉，人工复核时需要格外注意片段衔接处。</p>
+          <h3>AI 生成内容带来的新判断难点</h3>
+          <p>生成式模型产出的图片和视频，在审核场景中主要带来两类问题。第一类是伪造的“真人”违规内容，例如用换脸技术生成的色情视频，画面逼真但人物并非真实存在。这类内容在画面分级上与传统违规内容一致，但处置时需要额外标记为“AI 伪造”并追溯生成源头。第二类是模型生成的非违规但具有误导性的内容，例如虚构的新闻图片、伪造的证件截图，它们的风险不在色情暴力，而在于虚假信息传播，需要转入另一套审核流程。</p>
+          <ul>
+            <li><strong>光影一致性：</strong>AI 生成人脸在侧光环境下容易出现光线方向与背景不匹配。</li>
+            <li><strong>边缘伪影：</strong>换脸视频在面部轮廓与脖子交界处常有模糊或抖动。</li>
+            <li><strong>文本连贯性：</strong>生成图片中的文字往往笔画断裂或语义不通。</li>
+            <li><strong>元数据异常：</strong>部分生成工具会在文件属性中留下模型标识或异常参数。</li>
+          </ul>
+          <h3>分级标准与申诉处理</h3>
+          <p>多数平台采用三级分类：一级为明确违规，直接删除并记录；二级为疑似违规，限制流量或转人工复核；三级为不违规但需标注，例如含成人向暗示的内容需要年龄门槛。审核员在判定二级时最容易产生分歧，因为“疑似”本身没有绝对边界。一个实用的做法是参考同类案例的既有判例，保持同一平台内尺度一致。处理申诉时，审核员需要重新审视原始证据，并对照判例库确认判断是否有先例支持，而不是单凭个人感受改判。</p>
+          <h3>审核员的能力成长路径</h3>
+          <p>从新手到熟练审核员，通常经历三个阶段。第一阶段是记忆标准，把常见违规类型和对应处置方式背熟，这个阶段靠题库和判例库快速积累。第二阶段是建立边界感，能够处理擦边、艺术表达、医疗科普等灰色地带，这个阶段需要大量真实案例的对照练习。第三阶段是理解算法协作，知道模型的置信度意味着什么、误报集中在哪些类型、如何把人工判断反馈给模型迭代。达到第三阶段的审核员，往往也会参与标注规则制定和新人培训。</p>
+        </section>
+
+        <!-- 6. 体验指南 / 消费路径 -->
+        <section class="section" id="guide">
+          <div class="section-head">
+            <h2>内容消费与学习路径指南</h2>
+            <span class="section-sub">从哪类内容入手</span>
+          </div>
+          <div class="compare-panel" style="margin-bottom:18px;">
+            <div class="compare-box">
+              <h4>入门阶段先看什么</h4>
+              <ul>
+                <li>审核标准框架文档：先建立分级概念</li>
+                <li>情景判断题题库：用做题暴露认知盲区</li>
+                <li>基础违规类型图鉴：图片审核的起步材料</li>
+              </ul>
+            </div>
+            <div class="compare-box">
+              <h4>进阶阶段看什么</h4>
+              <ul>
+                <li>争议判例集：训练边界判断能力</li>
+                <li>AI 识别专题：补齐新型内容短板</li>
+                <li>工具评测报告：了解算法协作方式</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-list">
+            <div class="step-item">
+              <div>
+                <h4>先判断内容类型再选材料</h4>
+                <p>主攻图片审核的，优先看画面分级标准和图鉴；做文本审核的，从暗语词库和语义分析案例入手；直播审核则先看应急处置流程。</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div>
+                <h4>用判例检验自己的判断</h4>
+                <p>看完一段标准后，直接做对应判例题，对照参考答案看差异点在哪里。连续做 30 题以上，能明显发现自己容易判错的方向。</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div>
+                <h4>关注工具与算法的协作边界</h4>
+                <p>了解常见检测工具的误报类型，有助于在人工复核时快速定位可疑片段，也能理解为什么某些内容会被算法优先标记。</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div>
+                <h4>持续跟进规则更新</h4>
+                <p>平台审核细则通常按季度调整，新规发布后对照解读文档，重点看判断标准有没有变化，及时更新自己的判例库。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. FAQ -->
+        <section class="section" id="faq">
+          <div class="section-head">
+            <h2>常见问题解答</h2>
+            <span class="section-sub">6 个高频疑问</span>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>第一次接触内容审核，从哪个方向开始学比较好？</summary>
+              <div class="faq-body">建议从图片审核的基础标准入手，因为图片审核的判断依据最直观，容易建立分级概念。熟悉基础违规类型后，再扩展到文本暗语识别和视频审核。AI 生成内容识别可以放在有一定判断经验之后学习。</div>
+            </details>
+            <details>
+              <summary>图片审核和视频审核的判定标准有什么不同？</summary>
+              <div class="faq-body">图片审核看的是单帧画面的静态元素组合，判定速度快；视频审核要结合时间轴，看连续画面构成的整体含义。同一个画面在图片里可能不违规，但放进视频的叙事语境中就可能构成性暗示，这是两者最主要的差异。</div>
+            </details>
+            <details>
+              <summary>AI 生成的违规内容应该按普通违规处理吗？</summary>
+              <div class="faq-body">画面分级标准通常一致，但处置流程不同。AI 伪造内容需要额外标记“AI 生成”属性并追溯来源，因为它涉及伪造身份和虚假信息传播风险。部分平台会将其转入专门的虚假信息处置通道，而不是简单走色情内容删除流程。</div>
+            </details>
+            <details>
+              <summary>审核标准里的“疑似违规”一般怎么判断？</summary>
+              <div class="faq-body">“疑似”通常指内容存在违规倾向但未达到明确违规程度，或者判断依赖上下文语境。实际操作中，审核员会参照同类判例保持尺度一致，对难以确定的案例提交二次复核，而不是单凭个人感受直接判定。</div>
+            </details>
+            <details>
+              <summary>涉黄暗语和变体词一般多久更新一次词库？</summary>
+              <div class="faq-body">主流词库通常每月更新一次，删除失效词条并补充新出现的变体。直播和社交平台上的暗语演变较快，部分词库会按周做增量更新。审核员需要关注更新日志，了解新增词条的识别场景。</div>
+            </details>
+            <details>
+              <summary>内容审核员需要掌握哪些工具的使用？</summary>
+              <div class="faq-body">基础层面需要会使用画面检测工具、文本过滤系统和证据留存功能。进阶层面要理解算法的置信度含义、误报类型分布，以及如何把人工复核结果反馈给模型迭代。工具的具体品牌和界面因平台而异，但核心的协作逻辑相通。</div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 8. 用户评论 -->
+        <section class="section" id="comments">
+          <div class="section-head">
+            <h2>用户评论与讨论</h2>
+            <span class="section-sub">14 条近期留言</span>
+          </div>
+          <div class="comment-grid">
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">清</span><span class="comment-user">清风审核笔记</span><span class="comment-date">11-08</span></div>
+              <p class="comment-text">AI 识别专题课第 7 节的光影一致性方法很实用，之前处理换脸视频总拿不准，现在有了具体的检查步骤。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">木</span><span class="comment-user">木子李</span><span class="comment-date">11-07</span></div>
+              <p class="comment-text">判例集里的艺术创作边界案例，有几组其实我第一眼会判违规，看了审核意见才理解区分点在哪里。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">夜</span><span class="comment-user">夜班审核员</span><span class="comment-date">11-07</span></div>
+              <p class="comment-text">直播应急手册的连麦处置流程挺细的，不过实际场景里主播反应速度比流程快，还需要灵活处理。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">小</span><span class="comment-user">小陈同学</span><span class="comment-date">11-06</span></div>
+              <p class="comment-text">入门标准课程的题库从 280 题扩到 320 题了，新增的医疗健康类辨析题确实容易踩坑。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">一</span><span class="comment-user">一条咸鱼</span><span class="comment-date">11-06</span></div>
+              <p class="comment-text">工具评测更新挺勤的，11 月版多了两款新工具，准确率数据看着还行，就是不知道实际部署成本。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">深</span><span class="comment-user">深海观察</span><span class="comment-date">11-05</span></div>
+              <p class="comment-text">视频审核的抽帧逻辑那段讲得清楚，之前一直没想过快速闪现的画面可能被算法漏掉。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">审</span><span class="comment-user">审核老兵</span><span class="comment-date">11-05</span></div>
+              <p class="comment-text">做这行五年了，现在新人最大的问题是对灰色地带没概念，判例集这种材料应该早点看。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">阿</span><span class="comment-user">阿杰</span><span class="comment-date">11-04</span></div>
+              <p class="comment-text">暗语词库更新了 43 条，有几条谐音变体我在弹幕里见过，确实是新出现的。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">柠</span><span class="comment-user">柠檬不酸</span><span class="comment-date">11-04</span></div>
+              <p class="comment-text">想问下音频审核方向的内容是不是比较少，翻了几个板块好像没看到专门的音频案例。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">流</span><span class="comment-user">流年</span><span class="comment-date">11-03</span></div>
+              <p class="comment-text">文本审核直播回放看了两遍，弹幕互动那段有人问的暗语拆字问题正好是我困惑的。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">北</span><span class="comment-user">北纬三十度</span><span class="comment-date">11-03</span></div>
+              <p class="comment-text">新规解读文档把两条细则的影响点标出来了，比直接看原文省时间，希望以后每季度都出。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">星</span><span class="comment-user">星野</span><span class="comment-date">11-02</span></div>
+              <p class="comment-text">判例集里擦边写真的那组，我觉得平台之间尺度差异还是很大，同一张图不同平台结果可能不同。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">默</span><span class="comment-user">默然</span><span class="comment-date">11-01</span></div>
+              <p class="comment-text">学习路径那张对照表挺直观的，入门先看什么、进阶看什么，省得自己乱翻。</p>
+            </div>
+            <div class="comment-card">
+              <div class="comment-head"><span class="avatar">三</span><span class="comment-user">三月</span><span class="comment-date">10-30</span></div>
+              <p class="comment-text">AI 生成图片的文字断裂特征我验证过，确实很多模型生成的招牌文字都是乱的，很明显的判断点。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. 相关资讯 -->
+        <section class="section" id="news">
+          <div class="section-head">
+            <h2>相关资讯</h2>
+            <span class="section-sub">6 条近期内容动态</span>
+          </div>
+          <div class="news-list">
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/zixun-peixun01/600/400" alt="内容审核培训课程新增模块配图" width="600" height="400" loading="lazy">
+              <div>
+                <h4><a href="/#news">内容审核培训课程新增 AI 生成内容识别模块</a></h4>
+                <p>11 月 8 日上线的 4 节新模块，覆盖深度伪造画面检查与生成文本语义特征识别。</p>
+                <span class="news-date">2026-11-08</span>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/zixun-ciyu02/600/400" alt="暗语词库更新界面配图" width="600" height="400" loading="lazy">
+              <div>
+                <h4><a href="/#news">涉黄暗语词库发布 2026 年 11 月版</a></h4>
+                <p>新增 43 条谐音变体与直播弹幕暗语，同步移除 11 条已失效词条。</p>
+                <span class="news-date">2026-11-07</span>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/zixun-zhibo03/600/400" alt="直播审核应急手册封面配图" width="600" height="400" loading="lazy">
+              <div>
+                <h4><a href="/#news">直播审核应急手册第 3 版发布</a></h4>
+                <p>补充连麦场景违规连带责任判定流程，附一线处置话术模板。</p>
+                <span class="news-date">2026-11-06</span>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/zixun-gongju04/600/400" alt="审核工具评测数据图配图" width="600" height="400" loading="lazy">
+              <div>
+                <h4><a href="/#news">审核辅助工具评测更新 11 月数据</a></h4>
+                <p>两款新工具纳入对比，画面检测准确率与误报率数据同步调整。</p>
+                <span class="news-date">2026-11-05</span>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/zixun-xingui05/600/400" alt="平台内容安全新规解读文档配图" width="600" height="400" loading="lazy">
+              <div>
+                <h4><a href="/#news">平台内容安全新规解读文档上线</a></h4>
+                <p>梳理 10 月下旬生效的两项审核细则，标注对一线判断的具体影响点。</p>
+                <span class="news-date">2026-11-03</span>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/zixun-anli06/600/400" alt="典型违规案例判例集专题配图" width="600" height="400" loading="lazy">
+              <div>
+                <h4><a href="/#news">判例集新增「艺术创作边界」专题</a></h4>
+                <p>收录 12 个涉及人体艺术与低俗内容区分的案例，附审核意见与判断依据。</p>
+                <span class="news-date">2026-11-01</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 10. 相关推荐 -->
+        <section class="section" id="related">
+          <div class="section-head">
+            <h2>延伸方向与相关推荐</h2>
+            <span class="section-sub">8 个具体方向</span>
+          </div>
+          <div class="rec-tags">
+            <a href="/#deepdive">深度伪造视频检测</a>
+            <a href="/#deepdive">擦边写真判定标准</a>
+            <a href="/#deepdive">医疗科普内容误判</a>
+            <a href="/#guide">直播连麦处置流程</a>
+            <a href="/#picks">暗语拆字识别方法</a>
+            <a href="/#picks">画面抽帧检测原理</a>
+            <a href="/#news">审核细则季度更新</a>
+            <a href="/#picks">AI 生成文本特征</a>
+          </div>
+        </section>
+
+        <!-- 11. 补充板块：热门榜单 + 条目时间线 -->
+        <section class="section" id="ranking">
+          <div class="section-head">
+            <h2>热门学习资源榜单</h2>
+            <span class="section-sub">按近 30 天查阅热度排序</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="ranking-wrap">
+            <div>
+              <ol class="rank-list" style="gap:14px;">
+                <li class="rank-item"><span class="rank-num top1">1</span><div><a href="/#picks">内容审核员入门标准课程</a><span class="rank-meta">热度 9.6 · 32 课时</span></div></li>
+                <li class="rank-item"><span class="rank-num top2">2</span><div><a href="/#picks">AI 生成内容识别专题课</a><span class="rank-meta">热度 9.2 · 18 课时</span></div></li>
+                <li class="rank-item"><span class="rank-num top3">3</span><div><a href="/#picks">直播审核应急处理手册</a><span class="rank-meta">热度 8.9 · 电子版</span></div></li>
+                <li class="rank-item"><span class="rank-num">4</span><div><a href="/#picks">涉黄暗语与变体词识别库</a><span class="rank-meta">热度 8.7 · 持续更新</span></div></li>
+                <li class="rank-item"><span class="rank-num">5</span><div><a href="/#picks">审核辅助工具横向评测</a><span class="rank-meta">热度 8.5 · 11 月版</span></div></li>
+                <li class="rank-item"><span class="rank-num">6</span><div><a href="/#picks">典型违规案例判例集</a><span class="rank-meta">热度 8.3 · 80 案例</span></div></li>
+              </ol>
+            </div>
+            <div>
+              <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--brand);">近期内容更新时间线</h3>
+              <div class="timeline">
+                <div class="tl-item">
+                  <span class="tl-date">11 月 8 日</span>
+                  <p class="tl-text">AI 识别专题课新增“光影一致性”小节，配 12 组样本</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-date">11 月 7 日</span>
+                  <p class="tl-text">暗语词库 11 月版发布，增 43 条删 11 条</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-date">11 月 6 日</span>
+                  <p class="tl-text">入门课题库扩容至 320 题，新增医疗健康辨析</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-date">11 月 5 日</span>
+                  <p class="tl-text">工具评测更新，纳入 2 款新检测工具</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-date">11 月 3 日</span>
+                  <p class="tl-text">文本审核直播回放上线，含弹幕答疑片段</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- 右辅助栏 -->
+      <aside class="side-col" aria-label="辅助信息">
+        <div class="side-panel">
+          <h2>审核员热门收藏</h2>
+          <div class="rank-list">
+            <div class="rank-item"><span class="rank-num top1">1</span><div><a href="/#picks">入门标准课程</a><span class="rank-meta">32 课时</span></div></div>
+            <div class="rank-item"><span class="rank-num top2">2</span><div><a href="/#picks">AI 生成内容识别</a><span class="rank-meta">18 课时</span></div></div>
+            <div class="rank-item"><span class="rank-num top3">3</span><div><a href="/#picks">直播应急手册</a><span class="rank-meta">电子版</span></div></div>
+            <div class="rank-item"><span class="rank-num">4</span><div><a href="/#picks">暗语变体词库</a><span class="rank-meta">持续更新</span></div></div>
+            <div class="rank-item"><span class="rank-num">5</span><div><a href="/#picks">工具横向评测</a><span class="rank-meta">11 月版</span></div></div>
+          </div>
+        </div>
+        <div class="side-panel">
+          <h2>近期标准更新</h2>
+          <div class="timeline">
+            <div class="tl-item">
+              <span class="tl-date">11 月 8 日</span>
+              <p class="tl-text">AI 伪造内容标记流程调整，需追溯生成源头</p>
+            </div>
+            <div class="tl-item">
+              <span class="tl-date">11 月 4 日</span>
+              <p class="tl-text">艺术创作边界判例新增 12 例，附审核意见</p>
+            </div>
+            <div class="tl-item">
+              <span class="tl-date">11 月 1 日</span>
+              <p class="tl-text">季度审核细则解读发布，标注判断影响点</p>
+            </div>
+            <div class="tl-item">
+              <span class="tl-date">10 月 28 日</span>
+              <p class="tl-text">医疗健康类内容误判辨析题纳入题库</p>
+            </div>
+          </div>
+        </div>
+        <div class="side-panel">
+          <h2>工具速查</h2>
+          <div class="rec-tags" style="gap:6px;">
+            <a href="/#picks" style="font-size:12px;padding:4px 10px;">画面检测</a>
+            <a href="/#picks" style="font-size:12px;padding:4px 10px;">文本过滤</a>
+            <a href="/#picks" style="font-size:12px;padding:4px 10px;">证据留存</a>
+            <a href="/#picks" style="font-size:12px;padding:4px 10px;">抽帧比对</a>
+            <a href="/#picks" style="font-size:12px;padding:4px 10px;">元数据查看</a>
+            <a href="/#picks" style="font-size:12px;padding:4px 10px;">反向检索</a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-text">鉴黄师官方入口</span>
+          <p>汇集内容审核入门知识、培训课程、标准判例与工具评测，面向网络内容安全从业者与学习者。</p>
+        </div>
+        <div class="footer-col">
+          <h4>学习方向</h4>
+          <ul>
+            <li><a href="/#picks">图片审核入门</a></li>
+            <li><a href="/#picks">视频审核进阶</a></li>
+            <li><a href="/#picks">AI 生成内容识别</a></li>
+            <li><a href="/#picks">直播应急处置</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>标准与工具</h4>
+          <ul>
+            <li><a href="/#deepdive">分级标准解析</a></li>
+            <li><a href="/#deepdive">判例对照方法</a></li>
+            <li><a href="/#picks">审核工具评测</a></li>
+            <li><a href="/#picks">暗语词库</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>资讯与讨论</h4>
+          <ul>
+            <li><a href="/#news">近期标准更新</a></li>
+            <li><a href="/#comments">用户讨论</a></li>
+            <li><a href="/#faq">常见问答</a></li>
+            <li><a href="/#ranking">热门榜单</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 鉴黄师官方入口 · 内容聚合展示</span>
+        <span>部分内容为示例数据，仅用于展示页面结构</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 轻量交互：仅用于平滑锚点偏移兼容与键盘操作支持，无核心内容依赖
+    document.addEventListener('DOMContentLoaded', function () {
+      // 处理 details 的键盘切换（原生已支持，此处确保 summary 可获得焦点）
+      var summaries = document.querySelectorAll('.faq-list summary');
+      summaries.forEach(function (s) {
+        s.setAttribute('tabindex', '0');
+        s.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            var details = s.parentElement;
+            details.open = !details.open;
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+                </html>
