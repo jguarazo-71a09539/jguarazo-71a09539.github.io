@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>影视大全 - 剧集电影综片单聚合 - 影视大全 - 观影决策与片单导航</title>
+<meta name="description" content="影视大全汇聚剧集、电影、综艺、纪录片与动画等可看条目，按类型、地区、年份与口碑整理片单，并提供更新动态、深度解析、对比判断与观影路径，适合想快速找到下一部要看的观众。">
+<meta name="keywords" content="剧集片单,电影推荐,综艺节目,纪录片,观影指南">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141b2c'/%3E%3Cpath d='M14 20h36v6H14zM14 30h24v6H14zM14 40h30v6H14z' fill='%23f0b429'/%3E%3Ccircle cx='48' cy='33' r='7' fill='%23e2574c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#141b2c;
+  --ink-2:#2a3448;
+  --muted:#5d6879;
+  --line:#e2e5ec;
+  --bg:#f4f5f8;
+  --panel:#ffffff;
+  --brand:#1f2a44;
+  --accent:#c8442f;
+  --accent-soft:#fbeae7;
+  --gold:#b8860b;
+  --gold-soft:#fdf3dd;
+  --teal:#1f6f68;
+  --teal-soft:#e4f2f0;
+  --radius-s:6px;
+  --radius-m:12px;
+  --radius-l:18px;
+  --shadow-s:0 1px 2px rgba(20,27,44,.06),0 2px 8px rgba(20,27,44,.05);
+  --shadow-m:0 2px 6px rgba(20,27,44,.07),0 10px 26px rgba(20,27,44,.08);
+  --gap:22px;
+  --sticky-h:104px;
+  --maxw:1380px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sticky-h) + 14px)}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  font-size:15.5px;line-height:1.75;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+p{margin:0 0 .9em}
+ul,ol{margin:0 0 .9em;padding-left:1.25em}
+li{margin:.25em 0}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* ---------- 吸顶公告条 + 页头 ---------- */
+.sticky-wrap{position:sticky;top:0;z-index:60}
+.notice{
+  background:linear-gradient(90deg,#1f2a44,#33405f 60%,#1f2a44);
+  color:#f6f1e4;font-size:13.5px;letter-spacing:.01em;
+}
+.notice-inner{
+  max-width:var(--maxw);margin:0 auto;padding:8px 20px;
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+}
+.notice b{color:#ffd479;font-weight:700}
+.notice .dot{width:6px;height:6px;border-radius:50%;background:#ffd479;flex:0 0 auto;box-shadow:0 0 0 3px rgba(255,212,121,.22)}
+.notice .notice-more{margin-left:auto;color:#ffd479;border-bottom:1px dashed rgba(255,212,121,.5);white-space:nowrap}
+.site-head{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(20,27,44,.03)}
+.head-inner{
+  max-width:var(--maxw);margin:0 auto;padding:12px 20px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+.brand-mark{width:42px;height:42px;flex:0 0 auto}
+.brand-text{display:flex;flex-direction:column;line-height:1.18}
+.brand-name{font-size:21px;font-weight:800;letter-spacing:.03em;color:var(--brand)}
+.brand-sub{font-size:11.5px;color:var(--muted);letter-spacing:.14em}
+.head-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1 1 auto}
+.head-nav a{
+  padding:6px 11px;border-radius:999px;font-size:14px;color:var(--ink-2);
+  border:1px solid transparent;transition:.16s;white-space:nowrap;
+}
+.head-nav a:hover{background:var(--accent-soft);color:var(--accent);border-color:#f3d3cc}
+.head-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.search-box{position:relative;display:flex;align-items:center}
+.search-box input{
+  width:180px;padding:7px 32px 7px 12px;border:1px solid var(--line);border-radius:999px;
+  background:#f7f8fb;font-size:13.5px;color:var(--ink);
+}
+.search-box input:focus{background:#fff;border-color:var(--accent);outline:none}
+.search-box button{
+  position:absolute;right:3px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border:0;border-radius:50%;background:var(--brand);color:#fff;
+  display:grid;place-items:center;
+}
+.search-box button svg{width:14px;height:14px}
+.head-count{font-size:12.5px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--line);padding-left:12px}
+@media(max-width:1024px){
+  :root{--sticky-h:152px}
+  .head-nav{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .head-tools{margin-left:auto}
+}
+@media(max-width:740px){
+  :root{--sticky-h:136px}
+  .head-inner{padding:10px 14px;gap:10px}
+  .brand-name{font-size:19px}
+  .head-nav a{font-size:13px;padding:5px 9px}
+  .search-box input{width:126px}
+  .head-count{display:none}
+  .notice-inner{padding:7px 14px;font-size:12.5px}
+  .notice .notice-more{margin-left:0}
+}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  background:
+    radial-gradient(1100px 320px at 88% -10%,rgba(200,68,47,.13),transparent 62%),
+    radial-gradient(760px 280px at 6% 0%,rgba(31,111,104,.12),transparent 60%),
+    linear-gradient(180deg,#ffffff,#f6f7fa);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:var(--maxw);margin:0 auto;padding:34px 20px 30px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:38px;align-items:center;
+}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.14em;color:var(--teal);background:var(--teal-soft);border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.hero h1{font-size:clamp(30px,4.1vw,44px);letter-spacing:.02em;color:var(--brand)}
+.hero-lead{font-size:16.5px;color:var(--ink-2);max-width:46em;margin-top:12px}
+.hero-lead strong{color:var(--accent);font-weight:700}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:999px;font-size:14.5px;font-weight:600;border:1px solid transparent;transition:.16s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(200,68,47,.24)}
+.btn-primary:hover{background:#a93624}
+.btn-ghost{background:#fff;color:var(--brand);border-color:#cfd5e2}
+.btn-ghost:hover{border-color:var(--brand);background:#f7f8fb}
+.hero-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px dashed #d6dbe6}
+.hero-stats div{min-width:96px}
+.hero-stats b{display:block;font-size:20px;color:var(--brand);letter-spacing:.02em}
+.hero-stats span{font-size:12.5px;color:var(--muted)}
+.hero-visual{position:relative}
+.hv-frame{background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);box-shadow:var(--shadow-m);padding:14px}
+.hv-screen{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#1f2a44,#3b4a6b)}
+.hv-screen svg{display:block;width:100%;height:auto}
+.hv-strip{display:flex;gap:6px;margin-top:12px}
+.hv-strip span{height:5px;border-radius:3px;flex:1;background:#e3e7ef}
+.hv-strip span:first-child{background:var(--accent);flex:1.8}
+.hv-strip span:nth-child(2){background:var(--gold)}
+.hv-badge{
+  position:absolute;right:-8px;top:-12px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:8px 13px;box-shadow:var(--shadow-s);font-size:12.5px;color:var(--ink-2);
+  display:flex;align-items:center;gap:7px;
+}
+.hv-badge i{width:8px;height:8px;border-radius:50%;background:#2f9e6b;display:block;box-shadow:0 0 0 3px rgba(47,158,107,.16)}
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:26px;padding-top:26px}
+  .hero-visual{max-width:460px}
+}
+@media(max-width:740px){
+  .hero-inner{padding:22px 14px}
+  .hero-lead{font-size:15.5px}
+  .hero-stats{gap:14px}
+}
+
+/* ---------- 三栏主区 ---------- */
+.layout{
+  max-width:var(--maxw);margin:0 auto;padding:26px 20px 10px;
+  display:grid;grid-template-columns:178px minmax(0,1fr) 264px;gap:var(--gap);align-items:start;
+}
+@media(max-width:1180px){ .layout{grid-template-columns:168px minmax(0,1fr)} .rail-right{grid-column:1/-1;order:3} }
+@media(max-width:1024px){
+  .layout{grid-template-columns:1fr;padding:20px 16px 6px;gap:20px}
+  .rail-left{order:1}
+  .main-col{order:2}
+  .rail-right{order:3}
+  .rail-left .chan-list{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;padding-bottom:4px}
+  .rail-left .chan-list li{flex:0 0 auto}
+  .rail-left .rail-title{margin-bottom:8px}
+}
+@media(max-width:740px){ .layout{padding:16px 12px 4px} }
+.rail-left{position:sticky;top:calc(var(--sticky-h) + 16px)}
+.rail-right{position:sticky;top:calc(var(--sticky-h) + 16px)}
+@media(max-width:1180px){ .rail-left,.rail-right{position:static} }
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-m);box-shadow:var(--shadow-s)}
+.rail-title{
+  font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:700;
+  padding:0 0 10px;margin-bottom:6px;border-bottom:1px solid var(--line);
+}
+.chan-list{list-style:none;margin:0;padding:0}
+.chan-list a{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:8px 11px;border-radius:var(--radius-s);font-size:14px;color:var(--ink-2);border:1px solid transparent;transition:.15s;
+}
+.chan-list a:hover{background:#f4f6fa;border-color:#dfe4ee;color:var(--brand)}
+.chan-list .n{font-size:11.5px;color:var(--muted);background:#eef1f6;border-radius:999px;padding:1px 7px}
+.chan-list li.active a{background:var(--accent-soft);color:var(--accent);border-color:#f0cfc7;font-weight:700}
+.chan-list li.active .n{background:#fff;color:var(--accent)}
+
+/* 侧栏模块 */
+.rail-card{padding:15px 15px 13px;margin-bottom:var(--gap)}
+.rail-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.rail-head h2{font-size:14.5px;color:var(--brand);letter-spacing:.02em}
+.rail-head .tag{font-size:11.5px;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:1px 8px}
+.rank-list{list-style:none;margin:0;padding:0;counter-reset:rk}
+.rank-list li{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed #eaeef5;counter-increment:rk}
+.rank-list li:last-child{border-bottom:0;padding-bottom:0}
+.rank-list li::before{
+  content:counter(rk);flex:0 0 20px;height:20px;border-radius:5px;background:#eef1f6;color:var(--muted);
+  font-size:11.5px;font-weight:700;display:grid;place-items:center;margin-top:2px;
+}
+.rank-list li:nth-child(-n+3)::before{background:var(--accent);color:#fff}
+.rank-list a{font-size:13.5px;color:var(--ink);line-height:1.5;font-weight:600}
+.rank-list a:hover{color:var(--accent)}
+.rank-list .meta{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:1px}
+.update-stream{list-style:none;margin:0;padding:0}
+.update-stream li{padding:8px 0;border-bottom:1px dashed #eaeef5;font-size:13px;color:var(--ink-2)}
+.update-stream li:last-child{border-bottom:0;padding-bottom:0}
+.update-stream time{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.update-stream b{color:var(--ink);font-weight:600}
+.quick-tags{display:flex;flex-wrap:wrap;gap:6px}
+.quick-tags a{font-size:12.5px;padding:3px 10px;border-radius:999px;background:#f4f6fa;border:1px solid #e5e9f1;color:var(--ink-2)}
+.quick-tags a:hover{background:var(--gold-soft);border-color:#f0dfae;color:#8a6508}
+
+/* ---------- 板块通用 ---------- */
+.main-col{min-width:0;display:flex;flex-direction:column;gap:var(--gap)}
+.sect{padding:20px 22px 22px}
+.sect-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:11px;border-bottom:2px solid #eceff5}
+.sect-head h2{font-size:19.5px;color:var(--brand);letter-spacing:.02em;display:flex;align-items:center;gap:9px}
+.sect-head h2::before{content:"";width:5px;height:19px;border-radius:3px;background:var(--accent);display:block}
+.sect-head .sub{font-size:13px;color:var(--muted)}
+.sect-head .more{font-size:13px;color:var(--teal);font-weight:600;white-space:nowrap}
+.sect-head .more:hover{text-decoration:underline}
+@media(max-width:740px){ .sect{padding:16px 14px 18px} .sect-head h2{font-size:17.5px} }
+
+/* 概览 */
+.overview p{color:var(--ink-2);font-size:15px}
+.overview .ov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px}
+.ov-cell{background:#f8f9fc;border:1px solid #e8ecf3;border-left:3px solid var(--teal);border-radius:8px;padding:11px 13px}
+.ov-cell b{display:block;font-size:13.5px;color:var(--brand);margin-bottom:3px}
+.ov-cell span{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* 精选卡片 */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:16px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;background:#fff;
+  display:flex;flex-direction:column;transition:.18s;
+}
+.card:hover{box-shadow:var(--shadow-m);transform:translateY(-2px);border-color:#d3d9e6}
+.card-thumb{position:relative;aspect-ratio:4/3;background:#e9edf4;overflow:hidden}
+.card-thumb img{width:100%;height:100%;object-fit:cover}
+.card-thumb .pill{
+  position:absolute;left:9px;top:9px;background:rgba(20,27,44,.82);color:#fff;font-size:11.5px;
+  padding:2px 9px;border-radius:999px;backdrop-filter:blur(4px);letter-spacing:.03em;
+}
+.card-thumb .score{
+  position:absolute;right:9px;bottom:9px;background:var(--gold);color:#231a00;font-weight:800;
+  font-size:12.5px;padding:2px 8px;border-radius:6px;letter-spacing:.02em;
+}
+.card-body{padding:12px 13px 13px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-body h3{font-size:15.5px;color:var(--brand);line-height:1.4}
+.card-body .look{font-size:13px;color:var(--ink-2);line-height:1.65;flex:1}
+.tagline{display:flex;flex-wrap:wrap;gap:5px}
+.tagline span{font-size:11.5px;color:var(--muted);background:#f2f4f9;border-radius:4px;padding:1px 7px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px dashed #e9edf4;padding-top:7px}
+.card-foot .hot{color:var(--accent);font-weight:700}
+
+/* 动态列表 */
+.dyn-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0 26px}
+.dyn-list li{display:flex;gap:11px;padding:10px 0;border-bottom:1px dashed #eaeef5;align-items:flex-start}
+.dyn-list time{flex:0 0 74px;font-size:12px;color:var(--muted);letter-spacing:.01em;padding-top:2px}
+.dyn-list .dyn-body{min-width:0}
+.dyn-list b{font-size:14px;color:var(--ink);font-weight:700}
+.dyn-list b:hover{color:var(--accent)}
+.dyn-list p{margin:2px 0 0;font-size:12.8px;color:var(--muted);line-height:1.6}
+.dyn-type{display:inline-block;font-size:11px;padding:0 6px;border-radius:4px;background:var(--teal-soft);color:var(--teal);margin-left:6px;vertical-align:1px}
+@media(max-width:740px){ .dyn-list{grid-template-columns:1fr} .dyn-list time{flex-basis:64px} }
+
+/* 分类筛选 */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{
+  border:1px solid #dfe4ee;background:#fff;color:var(--ink-2);border-radius:999px;
+  padding:5px 14px;font-size:13.5px;transition:.15s;
+}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.cat-card{border:1px solid var(--line);border-radius:10px;padding:12px 13px;background:#fbfcfe;transition:.16s}
+.cat-card:hover{border-color:#cfd7e5;background:#fff;box-shadow:var(--shadow-s)}
+.cat-card h3{font-size:14.5px;color:var(--brand);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat-card h3 em{font-style:normal;font-size:11.5px;color:var(--muted);font-weight:400;background:#eef1f6;border-radius:999px;padding:1px 8px}
+.cat-card p{margin:5px 0 0;font-size:12.8px;color:var(--muted);line-height:1.6}
+.cat-empty{display:none;padding:22px;text-align:center;color:var(--muted);font-size:14px;background:#f8f9fc;border:1px dashed #d9dfeb;border-radius:10px}
+
+/* 深度解析 */
+.deep h3{font-size:16.5px;color:var(--brand);margin:20px 0 8px;padding-left:11px;border-left:3px solid var(--gold);line-height:1.4}
+.deep h3:first-of-type{margin-top:4px}
+.deep p{color:var(--ink-2);font-size:14.8px}
+.deep ul{padding-left:1.35em}
+.deep li{font-size:14.5px;color:var(--ink-2)}
+.deep li b{color:var(--ink)}
+.callout{background:var(--gold-soft);border:1px solid #f0dfae;border-radius:10px;padding:12px 15px;margin:14px 0;font-size:14px;color:#5c4508}
+.callout b{color:#7a5b05}
+
+/* 观影路径 步骤 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st;display:grid;gap:12px}
+.steps li{
+  display:grid;grid-template-columns:34px minmax(0,1fr);gap:13px;
+  background:#f8f9fc;border:1px solid #e8ecf3;border-radius:10px;padding:13px 15px;counter-increment:st;
+}
+.steps li::before{
+  content:counter(st);width:32px;height:32px;border-radius:9px;background:var(--brand);color:#ffd479;
+  font-weight:800;font-size:15px;display:grid;place-items:center;
+}
+.steps h3{font-size:14.8px;color:var(--brand);margin-bottom:3px}
+.steps p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.68}
+
+/* 时间线 */
+.timeline{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid #e4e9f2}
+.timeline li{position:relative;padding:0 0 16px 16px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--teal)}
+.timeline li.hot::before{border-color:var(--accent)}
+.timeline time{font-size:12px;color:var(--muted);letter-spacing:.02em;display:block}
+.timeline b{font-size:14.5px;color:var(--brand)}
+.timeline p{margin:2px 0 0;font-size:13.3px;color:var(--ink-2);line-height:1.65}
+
+/* FAQ */
+.faq details{border:1px solid var(--line);border-radius:10px;margin-bottom:9px;background:#fff;overflow:hidden}
+.faq details[open]{border-color:#cdd6e6;box-shadow:var(--shadow-s)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:12px 16px;font-size:14.8px;font-weight:600;color:var(--brand);
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:#eef1f6;color:var(--ink-2);font-weight:700;display:grid;place-items:center;font-size:15px;line-height:1}
+.faq details[open] summary::after{content:"−";background:var(--accent);color:#fff}
+.faq .ans{padding:0 16px 14px;font-size:14px;color:var(--ink-2);line-height:1.75}
+
+/* 评论 */
+.cmt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:12px}
+.cmt{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fbfcfe}
+.cmt-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.avatar{width:26px;height:26px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
+.cmt-top b{font-size:13px;color:var(--ink)}
+.cmt-top time{font-size:11.5px;color:var(--muted);margin-left:auto}
+.cmt p{margin:0;font-size:13.3px;color:var(--ink-2);line-height:1.7}
+.cmt .ref{font-size:11.8px;color:var(--teal);margin-top:6px;display:inline-block}
+
+/* 资讯 */
+.news-list{display:grid;gap:14px}
+.news-item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:15px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;transition:.16s}
+.news-item:hover{border-color:#d2d9e7;box-shadow:var(--shadow-s)}
+.news-item img{width:100%;height:100%;min-height:100px;object-fit:cover}
+.news-body{padding:11px 14px 12px 0}
+.news-body h3{font-size:15px;color:var(--brand);margin-bottom:4px}
+.news-body .nd{font-size:11.8px;color:var(--muted);letter-spacing:.02em;margin-bottom:5px}
+.news-body p{margin:0;font-size:13.3px;color:var(--ink-2);line-height:1.65}
+@media(max-width:740px){ .news-item{grid-template-columns:1fr} .news-item img{height:150px} .news-body{padding:0 14px 13px} }
+
+/* 相关推荐 标签索引 */
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.rel-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fbfcfe}
+.rel-item:hover{border-color:#cfd7e5;background:#fff}
+.rel-idx{flex:0 0 auto;font-size:11.5px;font-weight:800;color:var(--gold);letter-spacing:.04em;padding-top:1px}
+.rel-item b{font-size:13.8px;color:var(--ink);display:block}
+.rel-item span{font-size:12.3px;color:var(--muted);display:block;line-height:1.55;margin-top:1px}
+
+/* 榜单表 */
+.rank-table{width:100%;border-collapse:collapse;font-size:13.8px}
+.rank-table th{text-align:left;font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.08em;padding:0 10px 8px;border-bottom:1px solid var(--line)}
+.rank-table td{padding:9px 10px;border-bottom:1px dashed #eaeef5;vertical-align:middle}
+.rank-table tr:last-child td{border-bottom:0}
+.rank-table .rk{font-weight:800;color:var(--muted);width:34px}
+.rank-table tr:nth-child(-n+3) .rk{color:var(--accent)}
+.rank-table .tname{font-weight:700;color:var(--ink)}
+.rank-table .tname:hover{color:var(--accent)}
+.rank-table .num{font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.rank-table .up{color:#2f9e6b;font-weight:700}
+.table-scroll{overflow-x:auto}
+
+/* 页尾 */
+.site-foot{background:var(--brand);color:#cfd6e4;margin-top:34px}
+.foot-inner{max-width:var(--maxw);margin:0 auto;padding:32px 20px 20px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:32px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+.foot-brand{display:flex;gap:11px;align-items:center;margin-bottom:10px}
+.foot-brand .brand-name{color:#fff;font-size:19px}
+.foot-desc{font-size:13.3px;color:#a9b4c8;line-height:1.75;max-width:34em}
+.foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:20px}
+.foot-cols h3{font-size:13px;color:#ffd479;letter-spacing:.1em;margin-bottom:9px;font-weight:700}
+.foot-cols ul{list-style:none;margin:0;padding:0}
+.foot-cols li{margin:4px 0}
+.foot-cols a{font-size:13px;color:#c2cbdc}
+.foot-cols a:hover{color:#fff;text-decoration:underline}
+.foot-bottom{padding-top:16px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#93a0b8}
+@media(max-width:1024px){ .foot-top{grid-template-columns:1fr;gap:22px} }
+@media(max-width:740px){ .foot-inner{padding:24px 14px 16px} }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="notice" id="notice">
+    <div class="notice-inner">
+      <span class="dot" aria-hidden="true"></span>
+      <span><b>11 月 7 日</b> 新增 14 部剧集、6 部电影条目；<b>《雾港档案》第二季</b> 全 10 集上线</span>
+      <span>本周综艺更新 9 档 · 纪录片新入 5 部</span>
+      <a class="notice-more" href="/#dyn">查看更新动态</a>
+    </div>
+  </div>
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="/#top" aria-label="影视大全 首页">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="影视大全标志：胶片格与播放键组合">
+          <rect width="64" height="64" rx="14" fill="#1f2a44"/>
+          <rect x="10" y="13" width="44" height="38" rx="6" fill="none" stroke="#ffd479" stroke-width="2.4"/>
+          <rect x="10" y="13" width="44" height="9" fill="#ffd479" opacity=".22"/>
+          <circle cx="15.6" cy="17.5" r="1.9" fill="#ffd479"/><circle cx="21.6" cy="17.5" r="1.9" fill="#ffd479"/>
+          <circle cx="27.6" cy="17.5" r="1.9" fill="#ffd479"/>
+          <path d="M27 29.5l13 8-13 8z" fill="#e2574c"/>
+          <rect x="14" y="43" width="30" height="2.6" rx="1.3" fill="#8ea0c0"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">影视大全</span>
+          <span class="brand-sub">剧集 · 电影 · 综艺 · 纪录片</span>
+        </span>
+      </a>
+      <nav class="head-nav" aria-label="主题频道导航">
+        <a href="/#ch-drama">剧集</a>
+        <a href="/#ch-movie">电影</a>
+        <a href="/#ch-variety">综艺</a>
+        <a href="/#ch-doc">纪录片</a>
+        <a href="/#ch-anime">动画</a>
+        <a href="/#ch-mystery">悬疑</a>
+        <a href="/#ch-costume">古装</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="head-tools">
+        <form class="search-box" role="search" id="searchForm">
+          <label for="q" class="sr-only" style="position:absolute;left:-9999px">搜索条目名称</label>
+          <input id="q" name="q" type="search" placeholder="搜剧名 / 类型 / 地区" autocomplete="off">
+          <button type="submit" aria-label="搜索">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+          </button>
+        </form>
+        <span class="head-count">在库 1,286 条</span>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="hero-h1">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-kicker">片单导航 · 口碑判断 · 更新追踪</span>
+        <h1 id="hero-h1">影视大全</h1>
+        <p class="hero-lead">把剧集、电影、综艺、纪录片和动画放进同一张可比较的网里：从 <strong>悬疑刑侦</strong> 到 <strong>古装权谋</strong>，从院线新片到长篇连载，按类型、地区、年份与口碑找到下一部要看的条目，也看清它值不值得投入时间。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#featured">看本周精选条目</a>
+          <a class="btn btn-ghost" href="/#catalog">按类型筛选</a>
+          <a class="btn btn-ghost" href="/#dyn">今日更新</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>5</b><span>内容大类</span></div>
+          <div><b>9</b><span>主题频道</span></div>
+          <div><b>14</b><span>本周新增条目</span></div>
+          <div><b>2026-11-08</b><span>数据同步日期</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hv-frame">
+          <div class="hv-screen">
+            <svg viewBox="0 0 400 250" role="img" aria-label="影视内容分类构图">
+              <defs>
+                <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffd479" stop-opacity=".9"/>
+                  <stop offset="1" stop-color="#e2574c" stop-opacity=".55"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="250" fill="#1f2a44"/>
+              <circle cx="330" cy="40" r="70" fill="url(#glass)" opacity=".16"/>
+              <rect x="24" y="26" width="150" height="92" rx="9" fill="#2a3752" stroke="#4b5c7e"/>
+              <path d="M86 58l30 18-30 18z" fill="#ffd479"/>
+              <rect x="24" y="132" width="150" height="92" rx="9" fill="#2a3752" stroke="#4b5c7e"/>
+              <rect x="38" y="148" width="60" height="7" rx="3.5" fill="#7f8fb0"/>
+              <rect x="38" y="164" width="108" height="7" rx="3.5" fill="#5d6c8c"/>
+              <rect x="38" y="180" width="86" height="7" rx="3.5" fill="#5d6c8c"/>
+              <rect x="192" y="26" width="184" height="198" rx="10" fill="#263350" stroke="#4b5c7e"/>
+              <circle cx="284" cy="88" r="34" fill="none" stroke="#e2574c" stroke-width="3"/>
+              <path d="M272 72l26 16-26 16z" fill="#e2574c"/>
+              <rect x="210" y="146" width="148" height="8" rx="4" fill="#7f8fb0"/>
+              <rect x="210" y="164" width="118" height="8" rx="4" fill="#5d6c8c"/>
+              <rect x="210" y="182" width="134" height="8" rx="4" fill="#5d6c8c"/>
+              <rect x="210" y="200" width="70" height="8" rx="4" fill="#ffd479" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="hv-strip"><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="hv-badge"><i></i>今日 09:30 更新 27 条</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+
+    <!-- 左频道索引 -->
+    <aside class="rail-left" aria-label="频道索引">
+      <p class="rail-title">频道索引</p>
+      <ul class="chan-list">
+        <li class="active"><a href="/#ch-drama">剧集 <span class="n">486</span></a></li>
+        <li><a href="/#ch-movie">电影 <span class="n">392</span></a></li>
+        <li><a href="/#ch-variety">综艺 <span class="n">168</span></a></li>
+        <li><a href="/#ch-doc">纪录片 <span class="n">124</span></a></li>
+        <li><a href="/#ch-anime">动画 <span class="n">116</span></a></li>
+        <li><a href="/#ch-mystery">悬疑刑侦 <span class="n">97</span></a></li>
+        <li><a href="/#ch-costume">古装权谋 <span class="n">88</span></a></li>
+        <li><a href="/#ch-city">都市情感 <span class="n">103</span></a></li>
+        <li><a href="/#ch-scifi">科幻奇幻 <span class="n">74</span></a></li>
+        <li><a href="/#ch-docu">人文纪实 <span class="n">61</span></a></li>
+        <li><a href="/#deep">深度解析</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+      </ul>
+    </aside>
+
+    <!-- 主内容 -->
+    <div class="main-col">
+
+      <!-- 1 主题领域概览 -->
+      <section class="panel sect overview" id="overview" aria-labelledby="ov-h2">
+        <div class="sect-head">
+          <h2 id="ov-h2">影视内容版图：五个大类各自在讲什么</h2>
+          <span class="sub">2026-11-08 整理</span>
+        </div>
+        <p>影视大全所覆盖的范围，不是单一类型的片库，而是由剧集、电影、综艺、纪录片、动画五条主线交叉组成的观看版图。剧集以长篇连载为主，节奏慢、铺陈多，适合在几周内持续追看；电影单点完成，两小时上下讲完一个完整结构，适合一次性投入；综艺靠赛制与嘉宾关系推进，更新频率最高；纪录片提供事实密度，动画则在类型边界上最自由。理解这五类的差别，比记住榜单名次更有用。</p>
+        <p>当前值得关注的方向集中在几处。悬疑刑侦持续高产，<b>《雾港档案》第二季</b>与<b>《第七个证人》</b>几乎同期上线，形成“社会派”与“本格推理”的对照；古装权谋从大女主转向群像权谋，<b>《长安十二策》</b>用一日倒计时结构把朝堂戏压缩成高密度叙事；都市情感剧开始减少悬浮设定，<b>《合租第七年》</b>把镜头对准普通租客的生活细节。电影侧，<b>《雪线之上》</b>与<b>《回声实验》</b>分别代表现实题材与科幻小成本两条路线。综艺端，音乐竞演与生活观察仍是主流，<b>《声音的边界》第三季</b>把改编赛制做得更硬核。纪录片今年最受讨论的是<b>《城市底层》</b>与<b>《一条河流的四季》</b>，前者拍劳动者，后者拍生态变化。</p>
+        <div class="ov-grid">
+          <div class="ov-cell"><b>剧集 · 486 条</b><span>长篇连载，按集更新，适合追更与连续观看。</span></div>
+          <div class="ov-cell"><b>电影 · 392 条</b><span>单片完整叙事，院线与流媒体两条来源。</span></div>
+          <div class="ov-cell"><b>综艺 · 168 条</b><span>赛制驱动，周更为主，嘉宾关系是看点核心。</span></div>
+          <div class="ov-cell"><b>纪录片 · 124 条</b><span>事实密度高，适合按主题而非按热度选择。</span></div>
+          <div class="ov-cell"><b>动画 · 116 条</b><span>类型跨度最大，从合家欢到成人向都有。</span></div>
+        </div>
+      </section>
+
+      <!-- 2 精选内容推荐 -->
+      <section class="panel sect" id="featured" aria-labelledby="ft-h2">
+        <div class="sect-head">
+          <h2 id="ft-h2">本周精选：8 部值得先看的条目</h2>
+          <span class="sub">按口碑与讨论度综合排序</span>
+          <a class="more" href="/#catalog">按类型筛选 →</a>
+        </div>
+        <div class="card-grid">
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/wugang-dangan21/400/300" width="400" height="300" loading="lazy" alt="雾港档案第二季剧集封面：雨夜港口与档案柜">
+              <span class="pill">悬疑刑侦</span><span class="score">8.9</span>
+            </div>
+            <div class="card-body">
+              <h3>雾港档案 第二季</h3>
+              <p class="look">承接第一季的旧案线，把调查重心从个人复仇移到港口走私网络。全季 10 集，每集以一个物证命名，结构清楚，适合喜欢社会派推理的观众。</p>
+              <div class="tagline"><span>社会派</span><span>双线叙事</span><span>全 10 集</span></div>
+              <div class="card-foot"><span>11-07 上线</span><span class="hot">热度 96</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/changan-shice33/400/300" width="400" height="300" loading="lazy" alt="长安十二策古装剧场景：宫城与沙漏">
+              <span class="pill">古装权谋</span><span class="score">8.6</span>
+            </div>
+            <div class="card-body">
+              <h3>长安十二策</h3>
+              <p class="look">用一日倒计时推进整部剧，十二个时辰对应十二道政令。群像写得好，配角各有立场，不是单线爽剧，适合喜欢朝堂博弈的观众。</p>
+              <div class="tagline"><span>群像权谋</span><span>倒计时结构</span><span>更新至 18 集</span></div>
+              <div class="card-foot"><span>11-05 更新</span><span class="hot">热度 91</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/xueshan-zhishang08/400/300" width="400" height="300" loading="lazy" alt="雪线之上电影剧照：雪山与救援队">
+              <span class="pill">现实题材</span><span class="score">8.4</span>
+            </div>
+            <div class="card-body">
+              <h3>雪线之上</h3>
+              <p class="look">高原救援队题材，实景拍摄占比高。剧本把重点放在队员之间的判断分歧上，动作场面克制，适合偏好写实风格的观众。</p>
+              <div class="tagline"><span>救援题材</span><span>实景拍摄</span><span>118 分钟</span></div>
+              <div class="card-foot"><span>11-01 上线</span><span class="hot">热度 88</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/shengyin-bianjie14/400/300" width="400" height="300" loading="lazy" alt="声音的边界第三季综艺舞台：麦克风与灯光">
+              <span class="pill">音乐竞演</span><span class="score">8.2</span>
+            </div>
+            <div class="card-body">
+              <h3>声音的边界 第三季</h3>
+              <p class="look">改编赛制升级，每轮限定曲风与编制，选手必须重新编曲。评审改为“制作人 + 现场观众”双轨，赛果波动大，适合看现场表现力。</p>
+              <div class="tagline"><span>改编赛制</span><span>现场竞演</span><span>更新至第 6 期</span></div>
+              <div class="card-foot"><span>11-06 更新</span><span class="hot">热度 85</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/diqige-zhengren27/400/300" width="400" height="300" loading="lazy" alt="第七个证人剧集封面：审讯室与单向玻璃">
+              <span class="pill">本格推理</span><span class="score">8.1</span>
+            </div>
+            <div class="card-body">
+              <h3>第七个证人</h3>
+              <p class="look">封闭空间推理，六名证人证词互相矛盾，第七人始终未现身。每集结尾抛出一个可验证的物证，适合喜欢自己推凶手的观众。</p>
+              <div class="tagline"><span>密室推理</span><span>证词结构</span><span>更新至 12 集</span></div>
+              <div class="card-foot"><span>11-04 更新</span><span class="hot">热度 83</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/hezu-diqinian05/400/300" width="400" height="300" loading="lazy" alt="合租第七年都市剧场景：老小区客厅">
+              <span class="pill">都市情感</span><span class="score">7.9</span>
+            </div>
+            <div class="card-body">
+              <h3>合租第七年</h3>
+              <p class="look">三个普通租客在同一套老房子里住满七年，剧本围绕房租、换工作、家庭压力展开，台词生活化，适合想看不悬浮都市剧的观众。</p>
+              <div class="tagline"><span>生活流</span><span>群像</span><span>更新至 22 集</span></div>
+              <div class="card-foot"><span>11-03 更新</span><span class="hot">热度 79</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/chengshi-diceng42/400/300" width="400" height="300" loading="lazy" alt="城市底层纪录片画面：清晨街道与骑手">
+              <span class="pill">人文纪实</span><span class="score">8.7</span>
+            </div>
+            <div class="card-body">
+              <h3>城市底层</h3>
+              <p class="look">跟拍外卖骑手、清洁工与夜班保安的日常，共 6 集，每集聚焦一种职业。没有旁白渲染，靠现场声与长镜头推进，适合偏爱观察式纪录片的观众。</p>
+              <div class="tagline"><span>观察式</span><span>劳动题材</span><span>全 6 集</span></div>
+              <div class="card-foot"><span>10-29 上线</span><span class="hot">热度 87</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/huisheng-shiyan16/400/300" width="400" height="300" loading="lazy" alt="回声实验电影剧照：实验室与声波装置">
+              <span class="pill">科幻</span><span class="score">7.8</span>
+            </div>
+            <div class="card-body">
+              <h3>回声实验</h3>
+              <p class="look">小成本科幻，设定是能记录声音残留的装置，借此追问一桩旧事故。特效不多，靠概念与表演撑起，适合喜欢高概念低预算的观众。</p>
+              <div class="tagline"><span>高概念</span><span>小成本</span><span>102 分钟</span></div>
+              <div class="card-foot"><span>10-31 上线</span><span class="hot">热度 76</span></div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 3 最新更新动态 -->
+      <section class="panel sect" id="dyn" aria-labelledby="dyn-h2">
+        <div class="sect-head">
+          <h2 id="dyn-h2">今日更新与上线动态</h2>
+          <span class="sub">11 月 8 日 09:30 汇总</span>
+        </div>
+        <ul class="dyn-list">
+          <li><time>今天 09:20</time><div class="dyn-body"><b>雾港档案 第二季</b><span class="dyn-type">剧集</span><p>第 10 集（大结局）已上线，旧案线收束，片尾留有第三季线索。</p></div></li>
+          <li><time>今天 08:45</time><div class="dyn-body"><b>声音的边界 第三季</b><span class="dyn-type">综艺</span><p>第 7 期上线，本轮限定“民乐改编”，淘汰名额增加至两人。</p></div></li>
+          <li><time>今天 08:10</time><div class="dyn-body"><b>一条河流的四季</b><span class="dyn-type">纪录片</span><p>第 3 集《汛期》上线，拍摄跨度覆盖三个水文年。</p></div></li>
+          <li><time>昨天 21:40</time><div class="dyn-body"><b>长安十二策</b><span class="dyn-type">剧集</span><p>更新至第 18 集，中书省与枢密院的立场正式对撞。</p></div></li>
+          <li><time>昨天 20:15</time><div class="dyn-body"><b>第七个证人</b><span class="dyn-type">剧集</span><p>第 12 集上线，第三份证词被物证推翻，第七人首次出现在画面边缘。</p></div></li>
+          <li><time>昨天 18:00</time><div class="dyn-body"><b>雪线之上</b><span class="dyn-type">电影</span><p>流媒体上线，新增 12 分钟幕后花絮与救援顾问访谈。</p></div></li>
+          <li><time>11 月 6 日</time><div class="dyn-body"><b>合租第七年</b><span class="dyn-type">剧集</span><p>更新至第 22 集，主线转向房东涨租后的去留选择。</p></div></li>
+          <li><time>11 月 6 日</time><div class="dyn-body"><b>星轨之外</b><span class="dyn-type">动画</span><p>第 9 集上线，本季进入最终章，制作组公布第二季制作决定。</p></div></li>
+          <li><time>11 月 5 日</time><div class="dyn-body"><b>回声实验</b><span class="dyn-type">电影</span><p>上线导演解说音轨，补充声音装置设定的原始构思。</p></div></li>
+          <li><time>11 月 5 日</time><div class="dyn-body"><b>城市底层</b><span class="dyn-type">纪录片</span><p>全 6 集完结，新增“夜班保安”一集的补充访谈。</p></div></li>
+          <li><time>11 月 4 日</time><div class="dyn-body"><b>小城食记</b><span class="dyn-type">纪录片</span><p>第 4 集《早市》上线，记录三座县城的早餐摊主。</p></div></li>
+          <li><time>11 月 3 日</time><div class="dyn-body"><b>换乘人生</b><span class="dyn-type">综艺</span><p>第 5 期上线，嘉宾交换生活场景，观察周期由三天延长至五天。</p></div></li>
+        </ul>
+      </section>
+
+      <!-- 4 分类入口 + 筛选 -->
+      <section class="panel sect" id="catalog" aria-labelledby="cat-h2">
+        <div class="sect-head">
+          <h2 id="cat-h2">按类型与题材找条目</h2>
+          <span class="sub">点击分类筛选下方条目</span>
+        </div>
+        <div class="filter-bar" id="filterBar" role="group" aria-label="分类筛选">
+          <button class="chip" type="button" data-cat="all" aria-pressed="true">全部</button>
+          <button class="chip" type="button" data-cat="悬疑" aria-pressed="false">悬疑刑侦</button>
+          <button class="chip" type="button" data-cat="古装" aria-pressed="false">古装权谋</button>
+          <button class="chip" type="button" data-cat="都市" aria-pressed="false">都市情感</button>
+          <button class="chip" type="button" data-cat="科幻" aria-pressed="false">科幻奇幻</button>
+          <button class="chip" type="button" data-cat="纪实" aria-pressed="false">人文纪实</button>
+          <button class="chip" type="button" data-cat="综艺" aria-pressed="false">综艺竞演</button>
+          <button class="chip" type="button" data-cat="动画" aria-pressed="false">动画</button>
+        </div>
+        <div class="cat-grid" id="catGrid">
+          <div class="cat-card" data-cat="悬疑"><h3>悬疑刑侦 <em>97</em></h3><p>社会派、本格推理、犯罪心理三条支线，按案件结构与推理难度区分。</p></div>
+          <div class="cat-card" data-cat="古装"><h3>古装权谋 <em>88</em></h3><p>朝堂博弈、群像权谋、架空历史，重点看立场设置与信息释放节奏。</p></div>
+          <div class="cat-card" data-cat="都市"><h3>都市情感 <em>103</em></h3><p>生活流、职场、家庭关系，判断标准是台词可信度与人物动机。</p></div>
+          <div class="cat-card" data-cat="科幻"><h3>科幻奇幻 <em>74</em></h3><p>高概念设定、世界观构建、软硬科幻，先看设定是否自洽再看特效。</p></div>
+          <div class="cat-card" data-cat="纪实"><h3>人文纪实 <em>61</em></h3><p>观察式纪录片、人物访谈、自然生态，按拍摄方式与旁白介入程度区分。</p></div>
+          <div class="cat-card" data-cat="综艺"><h3>综艺竞演 <em>168</em></h3><p>音乐竞演、生活观察、竞技闯关，赛制清晰度决定追看体验。</p></div>
+          <div class="cat-card" data-cat="动画"><h3>动画 <em>116</em></h3><p>合家欢、青年向、成人向，类型跨度大，先确认分集时长与更新节奏。</p></div>
+          <div class="cat-card" data-cat="悬疑"><h3>犯罪心理 <em>42</em></h3><p>以侧写与审讯为核心，关注案件背后的动机链是否立得住。</p></div>
+        </div>
+        <div class="cat-empty" id="catEmpty">该分类下暂无条目，试试切换其他类型。</div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section class="panel sect deep" id="deep" aria-labelledby="deep-h2">
+        <div class="sect-head">
+          <h2 id="deep-h2">深度解析：类型差异、判断维度与消费策略</h2>
+          <span class="sub">约 800 字</span>
+        </div>
+
+        <h3>悬疑刑侦的两条路：社会派与本格推理</h3>
+        <p>悬疑刑侦内部最值得先分清的是社会派与本格推理的差别。<b>《雾港档案》第二季</b>属于社会派：案件本身不复杂，重点是案件背后的港口走私网络、地方利益与人物处境，推理过程服务于社会观察，观众跟着调查走，而不是跟着谜题走。相反，<b>《第七个证人》</b>是本格推理：封闭空间、六份互相矛盾的证词、一个始终未现身的第七人，所有信息都在剧内给出，观众可以暂停、回看、自己做推理。两类作品对观众的要求不同，前者需要耐心接受铺陈，后者需要主动记忆细节。</p>
+        <p>判断一部悬疑剧是否值得追，可以看三个维度：一是案件结构是否在前三集交代清楚，二是物证与证词是否可验证，三是人物动机是否与案件同步推进。如果一部剧到第五集还在靠新角色解释前情，通常意味着结构松散。</p>
+
+        <h3>古装权谋的群像转向</h3>
+        <p><b>《长安十二策》</b>代表近几年古装权谋的一次明显转向：从单一大女主或大男主，转向多立场群像。十二个时辰对应十二道政令，每一道政令都牵动不同派系，配角不再是工具人，而是有独立利益的行动者。这种结构的好处是信息密度高，坏处是对观众的注意力要求高——漏看一集可能就接不上派系变化。</p>
+        <ul>
+          <li><b>看立场设置：</b>每个主要角色是否有一致的利益诉求，还是随剧情需要改立场。</li>
+          <li><b>看信息释放：</b>关键情报是一次性抛出，还是分集递进，后者更耐看。</li>
+          <li><b>看配角质量：</b>群像剧的成败往往在配角，主角强而配角弱，朝堂戏就会塌。</li>
+        </ul>
+
+        <h3>都市情感剧的可信度判断</h3>
+        <p>都市情感剧最容易出问题的地方是“悬浮”：人物收入与生活方式不匹配，冲突靠巧合推进。<b>《合租第七年》</b>的处理方式是压缩戏剧性，把矛盾放在房租、换工作、家庭压力这些具体问题上，台词接近日常对话。判断这类剧是否可信，可以留意三个细节：人物是否真的为钱发愁、职业描写是否有具体工作内容、冲突是否由人物选择而非意外触发。</p>
+        <div class="callout"><b>比较策略：</b>同题材两部剧难以取舍时，先各看两集，比较“第二集结束时你是否还记得主角的具体目标”。记得住，说明叙事有效；记不住，多半是节奏或动机出了问题。</div>
+
+        <h3>纪录片与综艺的选择逻辑</h3>
+        <p>纪录片不按热度选，按拍摄方式选。观察式纪录片如<b>《城市底层》</b>几乎不用旁白，靠现场声与长镜头；解释式纪录片会大量使用旁白与图表，如<b>《一条河流的四季》</b>在生态数据段落会插入说明。前者适合自己观察，后者适合快速获取信息。综艺的判断标准则不同，核心是赛制是否清晰：<b>《声音的边界》第三季</b>每轮限定曲风与编制，规则一句话能说清，观众才能判断选手表现好坏；赛制含糊的综艺，往往靠剪辑制造冲突。</p>
+
+        <h3>电影与动画的投入产出</h3>
+        <p>电影是单次投入，判断成本低，看前 20 分钟就能决定是否继续。<b>《雪线之上》</b>用实景与克制动作戏建立写实感，<b>《回声实验》</b>靠高概念设定撑起小成本，两者都适合先看预告或前 15 分钟再决定。动画的变量更多，分集时长、更新节奏、是否季番都会影响追看体验，<b>《星轨之外》</b>属于季番结构，本季 12 集，进入最终章后节奏明显加快，适合一次性补完。</p>
+      </section>
+
+      <!-- 6 观影路径 -->
+      <section class="panel sect" id="path" aria-labelledby="path-h2">
+        <div class="sect-head">
+          <h2 id="path-h2">观影路径：从哪部开始，怎么判断值不值得投入</h2>
+          <span class="sub">按投入时间从短到长</span>
+        </div>
+        <ol class="steps">
+          <li>
+            <div>
+              <h3>先看单片，建立口味坐标</h3>
+              <p>如果不确定自己喜欢哪类，先从电影入手。<b>《雪线之上》</b>偏写实，<b>《回声实验》</b>偏概念，两部各看 20 分钟，就能判断自己更吃“真实感”还是“设定感”，这个判断会直接影响后面选剧的方向。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>用综艺测试更新节奏的耐受度</h3>
+              <p>综艺周更，适合测试自己能否接受“等更新”。<b>《声音的边界》第三季</b>每期一个限定主题，单期可独立观看，不必从第一期补起，适合先试水。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>再进入剧集：先看结构清楚的</h3>
+              <p>剧集投入最大，建议从结构清晰的开始。<b>《雾港档案》第二季</b>全 10 集，每集一个物证，节奏稳定；<b>《第七个证人》</b>适合喜欢自己推理的观众，但需要连续观看，断档容易丢失线索。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>纪录片放在碎片时间</h3>
+              <p><b>《城市底层》</b>每集独立，适合通勤或睡前单集观看；<b>《一条河流的四季》</b>有连续的水文线索，建议按顺序看，否则会丢失时间跨度带来的变化感。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>判断是否继续：三个止损信号</h3>
+              <p>看到第三集仍记不住主角目标、冲突靠新角色解释、配角只为推进主线存在——出现任意两条，基本可以判断这部剧不适合继续投入时间，换一部比硬撑更划算。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 7 FAQ -->
+      <section class="panel sect faq" id="faq" aria-labelledby="faq-h2">
+        <div class="sect-head">
+          <h2 id="faq-h2">常见问题</h2>
+          <span class="sub">围绕类型、更新与选择</span>
+        </div>
+        <details open>
+          <summary>悬疑刑侦剧一般多久更新一次？</summary>
+          <div class="ans">国内长篇剧集常见的是每周更新 4—6 集，分两到三天放出；季番结构的短剧多为每周固定一天更新 1—2 集。像《雾港档案》第二季这种全 10 集的短季，部分平台会一次性放出全集，追更压力小。判断更新节奏，看条目页的“更新方式”比看集数更直接。</div>
+        </details>
+        <details>
+          <summary>社会派推理和本格推理有什么区别？</summary>
+          <div class="ans">本格推理把重点放在谜题本身，线索在剧内公平给出，观众可以自己推凶手，比如《第七个证人》。社会派推理的重点是案件背后的社会结构与人物处境，推理过程服务于观察，比如《雾港档案》第二季。前者考验细节记忆，后者考验耐心与共情。</div>
+        </details>
+        <details>
+          <summary>第一次接触古装权谋，从哪部开始看比较好？</summary>
+          <div class="ans">建议从结构清晰的群像剧入手。《长安十二策》用一日倒计时推进，每集对应一道政令，派系关系有明确的时间锚点，比多线并行的长篇更容易跟上。如果担心信息量，可以先看前 3 集，确认自己能记住主要角色的立场再继续。</div>
+        </details>
+        <details>
+          <summary>都市情感剧怎么判断是不是“悬浮”？</summary>
+          <div class="ans">看三个地方：人物是否为钱发愁、职业是否有具体工作内容、冲突是否由人物选择触发。《合租第七年》在这三点上比较扎实，房租、换工作、家庭压力都是具体问题。如果一部剧里人物收入与生活方式明显不匹配，冲突又主要靠巧合，基本可以判断为悬浮。</div>
+        </details>
+        <details>
+          <summary>纪录片按什么标准挑比较靠谱？</summary>
+          <div class="ans">先看拍摄方式：观察式纪录片几乎不用旁白，靠现场声与长镜头，如《城市底层》；解释式纪录片会用旁白与图表补充信息，如《一条河流的四季》。前者适合自己观察，后者适合快速获取事实。其次看集数与单集时长，独立成集的更适合碎片时间。</div>
+        </details>
+        <details>
+          <summary>综艺赛制看不懂，还要继续追吗？</summary>
+          <div class="ans">赛制是综艺的核心判断依据。如果两期之后仍说不清晋级规则，说明赛制设计或剪辑有问题，追看体验会持续下降。《声音的边界》第三季的规则一句话能说清——每轮限定曲风与编制，观众才能判断选手表现好坏。规则含糊的综艺，通常靠剪辑制造冲突，可看性有限。</div>
+        </details>
+      </section>
+
+      <!-- 8 用户评论 -->
+      <section class="panel sect" id="comments" aria-labelledby="cm-h2">
+        <div class="sect-head">
+          <h2 id="cm-h2">观众评论：16 条围绕具体条目的反馈</h2>
+          <span class="sub">11 月 7—8 日</span>
+        </div>
+        <div class="cmt-grid">
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#c8442f">林</span><b>林间有雾</b><time>今天 09:42</time></div><p>《雾港档案》第二季大结局收得比第一季稳，走私线的几个伏笔都回收了，没有硬留悬念。</p><span class="ref">雾港档案 第二季</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#1f6f68">陈</span><b>陈小满</b><time>今天 09:15</time></div><p>《第七个证人》第 12 集那个物证反转我回看了两遍，第三份证词确实前后矛盾，编剧埋得挺细。</p><span class="ref">第七个证人</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#b8860b">周</span><b>周不看剧</b><time>昨天 23:08</time></div><p>《长安十二策》配角比主角好看，中书省那位老臣的立场转变写得很自然，不是突然倒戈。</p><span class="ref">长安十二策</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#3b4a6b">吴</span><b>吴下阿蒙</b><time>昨天 22:31</time></div><p>《雪线之上》动作戏克制这点好评，但中段救援决策的争论有点重复，剪掉十分钟会更好。</p><span class="ref">雪线之上</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#8a4b8a">苏</span><b>苏打气泡</b><time>昨天 21:47</time></div><p>《声音的边界》第三季民乐改编这期水平差距太大，有两组编曲基本没动原曲结构，听着像翻唱。</p><span class="ref">声音的边界 第三季</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#2f7d9e">何</span><b>何处不相逢</b><time>昨天 20:52</time></div><p>《合租第七年》涨租那几集太真实了，台词不像写的，像偷听邻居聊天。</p><span class="ref">合租第七年</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#a0522d">郑</span><b>郑在观看</b><time>昨天 19:30</time></div><p>《城市底层》夜班保安那集看完挺久的，没什么煽情，就是跟着走了一夜。</p><span class="ref">城市底层</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#4b6a3b">许</span><b>许一半</b><time>昨天 18:12</time></div><p>《回声实验》概念不错，但结尾解释得太满，留白一点会更有味道。</p><span class="ref">回声实验</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#7a5b05">沈</span><b>沈默是金</b><time>11 月 7 日 23:40</time></div><p>《一条河流的四季》汛期那集数据密度高，适合配着笔记看，纯放松看会有点吃力。</p><span class="ref">一条河流的四季</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#c8442f">罗</span><b>罗盘指针</b><time>11 月 7 日 22:05</time></div><p>《星轨之外》本季进入最终章后节奏明显快了，前六集铺垫有点慢，但后段值回票价。</p><span class="ref">星轨之外</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#1f6f68">高</span><b>高处看云</b><time>11 月 7 日 20:18</time></div><p>《换乘人生》这季嘉宾选得一般，交换场景同质化，看两期就疲了。</p><span class="ref">换乘人生</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#3b4a6b">韩</span><b>韩三页</b><time>11 月 7 日 19:02</time></div><p>《小城食记》早市那集拍得好，摊主手上的动作全是细节，比念旁白有说服力。</p><span class="ref">小城食记</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#b8860b">严</span><b>严冬不冷</b><time>11 月 6 日 22:44</time></div><p>《雾港档案》第二季前两集节奏偏慢，坚持到第四集物证串起来之后就顺了。</p><span class="ref">雾港档案 第二季</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#8a4b8a">倪</span><b>倪好同学</b><time>11 月 6 日 21:10</time></div><p>《第七个证人》适合连续看，我隔了一周再捡起来，前两集的证词细节全忘了。</p><span class="ref">第七个证人</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#2f7d9e">方</span><b>方寸之间</b><time>11 月 6 日 20:26</time></div><p>《长安十二策》服化道不算顶级，但朝堂戏的座位排序对应品级，这个细节很加分。</p><span class="ref">长安十二策</span></div>
+          <div class="cmt"><div class="cmt-top"><span class="avatar" style="background:#a0522d">唐</span><b>唐不苦</b><time>11 月 5 日 23:15</time></div><p>《合租第七年》第 22 集去留选择那段有点拖，但三个人各自的理由都立得住，不算烂尾。</p><span class="ref">合租第七年</span></div>
+        </div>
+      </section>
+
+      <!-- 9 相关资讯 -->
+      <section class="panel sect" id="news" aria-labelledby="news-h2">
+        <div class="sect-head">
+          <h2 id="news-h2">相关资讯与条目动态</h2>
+          <span class="sub">11 月 1—8 日</span>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/wugang-dangan11/600/400" width="600" height="400" loading="lazy" alt="雾港档案第二季上线资讯配图：港口雨夜">
+            <div class="news-body">
+              <h3>《雾港档案》第二季全集上线，社会派推理再添一部长篇</h3>
+              <p class="nd">2026-11-07 · 剧集上线</p>
+              <p>全 10 集一次性放出，每集以一个物证命名，主线围绕港口走私网络展开，片尾确认第三季进入筹备。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/shengyin-bianjie09/600/400" width="600" height="400" loading="lazy" alt="声音的边界第三季赛制调整资讯配图：舞台灯光">
+            <div class="news-body">
+              <h3>《声音的边界》第三季赛制调整：限定曲风与双轨评审</h3>
+              <p class="nd">2026-11-06 · 综艺赛制</p>
+              <p>本轮起每期限定一种曲风与编制，评审改为制作人与现场观众双轨计分，淘汰名额增加至两人。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/changan-shice18/600/400" width="600" height="400" loading="lazy" alt="长安十二策群像权谋资讯配图：宫城长廊">
+            <div class="news-body">
+              <h3>《长安十二策》进入中后段，群像权谋成为古装剧讨论焦点</h3>
+              <p class="nd">2026-11-05 · 类型观察</p>
+              <p>更新至第 18 集，中书省与枢密院立场正式对撞，观众讨论集中在配角立场的一致性与政令节奏。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/chengshi-diceng31/600/400" width="600" height="400" loading="lazy" alt="城市底层纪录片完结资讯配图：清晨街道">
+            <div class="news-body">
+              <h3>《城市底层》全 6 集完结，观察式纪录片回到劳动现场</h3>
+              <p class="nd">2026-11-05 · 纪录片</p>
+              <p>跟拍外卖骑手、清洁工与夜班保安，几乎不用旁白，新增“夜班保安”一集的补充访谈。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/xueshan-zhishang22/600/400" width="600" height="400" loading="lazy" alt="雪线之上流媒体上线资讯配图：雪山救援队">
+            <div class="news-body">
+              <h3>《雪线之上》流媒体上线，新增幕后花絮与救援顾问访谈</h3>
+              <p class="nd">2026-11-03 · 电影上线</p>
+              <p>院线下线后转入流媒体，补充 12 分钟幕后内容，救援顾问在访谈中说明实景拍摄的安全方案。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/xinggui-zhiwai07/600/400" width="600" height="400" loading="lazy" alt="星轨之外动画最终章资讯配图：星轨与飞船">
+            <div class="news-body">
+              <h3>《星轨之外》进入最终章，第二季制作决定公布</h3>
+              <p class="nd">2026-11-02 · 动画</p>
+              <p>本季第 9 集上线后节奏加快，制作组在片尾公布第二季制作决定，具体档期未定。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section class="panel sect" id="related" aria-labelledby="rel-h2">
+        <div class="sect-head">
+          <h2 id="rel-h2">延伸方向：顺着类型往下找</h2>
+          <span class="sub">与热门推荐角度不同，侧重延伸线索</span>
+        </div>
+        <div class="rel-grid">
+          <a class="rel-item" href="/#ch-mystery"><span class="rel-idx">01</span><span><b>密室推理剧单</b><span>封闭空间、证词矛盾、物证可验证，适合自己推凶手。</span></span></a>
+          <a class="rel-item" href="/#ch-costume"><span class="rel-idx">02</span><span><b>朝堂群像权谋</b><span>多派系立场与信息释放节奏，重点看配角是否独立。</span></span></a>
+          <a class="rel-item" href="/#ch-city"><span class="rel-idx">03</span><span><b>生活流都市剧</b><span>台词可信、冲突由人物选择触发，减少巧合推进。</span></span></a>
+          <a class="rel-item" href="/#ch-docu"><span class="rel-idx">04</span><span><b>观察式纪录片</b><span>几乎不用旁白，靠现场声与长镜头，适合自己观察。</span></span></a>
+          <a class="rel-item" href="/#ch-scifi"><span class="rel-idx">05</span><span><b>高概念低预算科幻</b><span>先看设定是否自洽，再看特效投入，概念比场面重要。</span></span></a>
+          <a class="rel-item" href="/#ch-variety"><span class="rel-idx">06</span><span><b>限定曲风竞演综艺</b><span>赛制一句话能说清，观众才能判断选手表现好坏。</span></span></a>
+          <a class="rel-item" href="/#ch-anime"><span class="rel-idx">07</span><span><b>季番动画补完计划</b><span>先确认分集时长与更新节奏，再决定是否一次性补完。</span></span></a>
+          <a class="rel-item" href="/#path"><span class="rel-idx">08</span><span><b>单片入门观影路径</b><span>从电影建立口味坐标，再进入长篇剧集与纪录片。</span></span></a>
+        </div>
+      </section>
+
+      <!-- 11 补充板块：时间线与榜单 -->
+      <section class="panel sect" id="timeline" aria-labelledby="tl-h2">
+        <div class="sect-head">
+          <h2 id="tl-h2">条目时间线：本周上线与更新节点</h2>
+          <span class="sub">11 月 1—8 日</span>
+        </div>
+        <ul class="timeline">
+          <li class="hot"><time>2026-11-07</time><b>《雾港档案》第二季全 10 集上线</b><p>社会派推理，每集一个物证，片尾确认第三季筹备。</p></li>
+          <li><time>2026-11-06</time><b>《声音的边界》第三季第 7 期</b><p>限定民乐改编，淘汰名额增至两人，双轨评审首次启用。</p></li>
+          <li><time>2026-11-05</time><b>《城市底层》全 6 集完结</b><p>新增夜班保安一集的补充访谈，观察式拍摄贯穿全片。</p></li>
+          <li><time>2026-11-04</time><b>《第七个证人》更新至第 12 集</b><p>第三份证词被物证推翻，第七人首次出现在画面边缘。</p></li>
+          <li><time>2026-11-03</time><b>《雪线之上》流媒体上线</b><p>新增 12 分钟幕后花絮与救援顾问访谈。</p></li>
+          <li><time>2026-11-02</time><b>《星轨之外》第 9 集与第二季制作决定</b><p>本季进入最终章，节奏加快，档期未定。</p></li>
+        </ul>
+      </section>
+
+      <section class="panel sect" id="board" aria-labelledby="bd-h2">
+        <div class="sect-head">
+          <h2 id="bd-h2">本周口碑榜：按评分与讨论度综合</h2>
+          <span class="sub">截至 2026-11-08 09:30</span>
+        </div>
+        <div class="table-scroll">
+          <table class="rank-table">
+            <thead>
+              <tr><th>排名</th><th>条目</th><th>类型</th><th>评分</th><th>讨论量</th><th>趋势</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="rk">1</td><td><a class="tname" href="/#featured">雾港档案 第二季</a></td><td>悬疑刑侦</td><td class="num">8.9</td><td class="num">42,180</td><td class="num up">↑ 3</td></tr>
+              <tr><td class="rk">2</td><td><a class="tname" href="/#featured">城市底层</a></td><td>人文纪实</td><td class="num">8.7</td><td class="num">28,640</td><td class="num up">↑ 1</td></tr>
+              <tr><td class="rk">3</td><td><a class="tname" href="/#featured">长安十二策</a></td><td>古装权谋</td><td class="num">8.6</td><td class="num">36,905</td><td class="num">— 0</td></tr>
+              <tr><td class="rk">4</td><td><a class="tname" href="/#featured">雪线之上</a></td><td>现实题材</td><td class="num">8.4</td><td class="num">21,377</td><td class="num up">↑ 2</td></tr>
+              <tr><td class="rk">5</td><td><a class="tname" href="/#featured">声音的边界 第三季</a></td><td>音乐竞演</td><td class="num">8.2</td><td class="num">19,824</td><td class="num">↓ 1</td></tr>
+              <tr><td class="rk">6</td><td><a class="tname" href="/#featured">第七个证人</a></td><td>本格推理</td><td class="num">8.1</td><td class="num">17,560</td><td class="num up">↑ 4</td></tr>
+              <tr><td class="rk">7</td><td><a class="tname" href="/#featured">合租第七年</a></td><td>都市情感</td><td class="num">7.9</td><td class="num">15,208</td><td class="num">— 0</td></tr>
+              <tr><td class="rk">8</td><td><a class="tname" href="/#featured">回声实验</a></td><td>科幻</td><td class="num">7.8</td><td class="num">12,436</td><td class="num">↓ 2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 右辅助栏 -->
+    <aside class="rail-right" aria-label="辅助信息">
+      <div class="panel rail-card">
+        <div class="rail-head"><h2>今日热看榜</h2><span class="tag">11-08</span></div>
+        <ol class="rank-list">
+          <li><a href="/#featured">雾港档案 第二季<span class="meta">悬疑刑侦 · 全 10 集</span></a></li>
+          <li><a href="/#featured">长安十二策<span class="meta">古装权谋 · 更新至 18 集</span></a></li>
+          <li><a href="/#featured">城市底层<span class="meta">人文纪实 · 全 6 集</span></a></li>
+          <li><a href="/#featured">第七个证人<span class="meta">本格推理 · 更新至 12 集</span></a></li>
+          <li><a href="/#featured">声音的边界 第三季<span class="meta">音乐竞演 · 第 7 期</span></a></li>
+          <li><a href="/#featured">雪线之上<span class="meta">现实题材 · 118 分钟</span></a></li>
+          <li><a href="/#featured">合租第七年<span class="meta">都市情感 · 更新至 22 集</span></a></li>
+        </ol>
+      </div>
+
+      <div class="panel rail-card">
+        <div class="rail-head"><h2>更新流</h2><a class="tag" href="/#dyn">全部</a></div>
+        <ul class="update-stream">
+          <li><time>今天 09:20</time><b>雾港档案 第二季</b> 第 10 集上线</li>
+          <li><time>今天 08:45</time><b>声音的边界 第三季</b> 第 7 期上线</li>
+          <li><time>今天 08:10</time><b>一条河流的四季</b> 第 3 集上线</li>
+          <li><time>昨天 21:40</time><b>长安十二策</b> 更新至 18 集</li>
+          <li><time>昨天 20:15</time><b>第七个证人</b> 更新至 12 集</li>
+          <li><time>11 月 6 日</time><b>合租第七年</b> 更新至 22 集</li>
+        </ul>
+      </div>
+
+      <div class="panel rail-card">
+        <div class="rail-head"><h2>热门标签</h2></div>
+        <div class="quick-tags">
+          <a href="/#ch-mystery">社会派推理</a>
+          <a href="/#ch-mystery">密室推理</a>
+          <a href="/#ch-costume">群像权谋</a>
+          <a href="/#ch-city">生活流都市</a>
+          <a href="/#ch-docu">观察式纪录片</a>
+          <a href="/#ch-scifi">高概念科幻</a>
+          <a href="/#ch-variety">限定曲风</a>
+          <a href="/#ch-anime">季番</a>
+          <a href="/#ch-docu">生态纪实</a>
+          <a href="/#ch-city">家庭关系</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="影视大全页尾标志">
+            <rect width="64" height="64" rx="14" fill="#2a3752"/>
+            <rect x="10" y="13" width="44" height="38" rx="6" fill="none" stroke="#ffd479" stroke-width="2.4"/>
+            <path d="M27 29.5l13 8-13 8z" fill="#e2574c"/>
+          </svg>
+          <span class="brand-text"><span class="brand-name">影视大全</span></span>
+        </div>
+        <p class="foot-desc">聚合剧集、电影、综艺、纪录片与动画条目的片单导航：按类型、地区、年份与口碑整理，提供更新动态、类型对比、观影路径与常见问题，帮助观众判断下一部要看的条目是否值得投入时间。</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h3>内容大类</h3>
+          <ul>
+            <li><a href="/#ch-drama">剧集</a></li>
+            <li><a href="/#ch-movie">电影</a></li>
+            <li><a href="/#ch-variety">综艺</a></li>
+            <li><a href="/#ch-doc">纪录片</a></li>
+            <li><a href="/#ch-anime">动画</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>题材频道</h3>
+          <ul>
+            <li><a href="/#ch-mystery">悬疑刑侦</a></li>
+            <li><a href="/#ch-costume">古装权谋</a></li>
+            <li><a href="/#ch-city">都市情感</a></li>
+            <li><a href="/#ch-scifi">科幻奇幻</a></li>
+            <li><a href="/#ch-docu">人文纪实</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>判断与选择</h3>
+          <ul>
+            <li><a href="/#deep">深度解析</a></li>
+            <li><a href="/#path">观影路径</a></li>
+            <li><a href="/#faq">常见问题</a></li>
+            <li><a href="/#board">本周口碑榜</a></li>
+            <li><a href="/#timeline">上线时间线</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+      <span>© 2026 影视大全 · 片单与条目整理</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* 分类筛选 */
+  var bar=document.getElementById('filterBar');
+  var grid=document.getElementById('catGrid');
+  var empty=document.getElementById('catEmpty');
+  if(bar&&grid){
+    var chips=bar.querySelectorAll('.chip');
+    var cards=grid.querySelectorAll('.cat-card');
+    bar.addEventListener('click',function(e){
+      var btn=e.target.closest('.chip'); if(!btn)return;
+      var cat=btn.getAttribute('data-cat');
+      chips.forEach(function(c){c.setAttribute('aria-pressed',c===btn?'true':'false');});
+      var shown=0;
+      cards.forEach(function(card){
+        var ok=(cat==='all'||card.getAttribute('data-cat')===cat);
+        card.style.display=ok?'':'none';
+        if(ok)shown++;
+      });
+      if(empty)empty.style.display=shown?'none':'block';
+    });
+  }
+
+  /* 搜索：本地查找并滚动到匹配板块 */
+  var form=document.getElementById('searchForm');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var q=(document.getElementById('q').value||'').trim();
+      if(!q)return;
+      var target=null;
+      var all=document.querySelectorAll('.main-col .card, .main-col .dyn-list li, .main-col .news-item, .main-col .cat-card');
+      for(var i=0;i<all.length;i++){
+        if(all[i].textContent.indexOf(q)>-1){target=all[i];break;}
+      }
+      if(target){
+        target.scrollIntoView({behavior:'smooth',block:'center'});
+        target.style.transition='box-shadow .3s';
+        target.style.boxShadow='0 0 0 3px #c8442f';
+        setTimeout(function(){target.style.boxShadow='';},1800);
+      }else{
+        var box=document.getElementById('catEmpty');
+        if(box){box.textContent='未找到与“'+q+'”匹配的条目，试试“悬疑”“古装”“纪录片”等类型词。';box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'center'});}
+      }
+    });
+  }
+})();
+</script>
+</body>
+                </html>
